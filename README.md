@@ -23,7 +23,6 @@ Installation
 * Harp has been tested on Ownes (OSC), and standalone Linux computers
 
 ### Loading the HARP module to execute
-  [WILL UPDATE THIS]
    ```bash
   module use $HOME/osc_apps/lmodfiles
   module load harp 
