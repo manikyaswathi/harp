@@ -19,7 +19,7 @@ Installation
   chmod 755 *
   ./install-osc-harp.sh
   ```
-* Follow the installtion prompts to proceed with the setup. This setup installs CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas and scikit-learn and configures the Harp framework
+* Follow the installtion prompts to proceed with the setup. This setup installs CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas and scikit-learn and configures the Harp framework. It takes abiut 30-40 mins to finish the setup.
 * Harp has been tested on Ownes (OSC), and standalone Linux computers
 
 ##### Loading the HARO module to execute
