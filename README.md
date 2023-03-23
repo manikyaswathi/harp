@@ -36,12 +36,16 @@ Installation
 ------------
 * Dependency: Linux, Python 3.9(only)
 * On supercomputers it should be installed at a location accessible from the parallel file system
-* Fowwlow the steps to set up Harp as a loadable software module:
+* Follow these steps to set up Harp as a loadable software module on Ohio Supercomputer:
   ```bash
   git clone https://github.com/ICICLE-ai/harp.git
   cd harp
   chmod 755 *
   ./install-osc-harp.sh
+  ```
+* Follow these steps to seto HARP framewok on a stand-alone linux system:
+  ```bash
+  WILL ADD THESE 
   ```
 * Follow the installtion prompts to proceed with the setup. This setup installs CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas and scikit-learn and configures the Harp framework. It takes abiut 30-40 mins to finish the setup.
 * Harp has been tested on Ownes (OSC), and standalone Linux computers
@@ -66,7 +70,7 @@ The eulers number and other examples could be found in folder "examples"
 NOTE
 -------------
 Things to consider while using the framework
-1. The installer creates a conda environmnet "harp_env" and uses this environmentto execute the framework. Please delete the evironment if it already exists with this name for this version of framework. It uses the name "harp_env" at couple of places hardcoded (while executing CODARCheetah) and hence is mandated to use the same environment name for this release. 
+1.[OSC Installation] The installer creates a conda environmnet "harp_env" on OSC and uses this environment to execute the framework. Please delete the evironment if it already exists with this name for this version of framework. The enviroment name is used in a couple of Cheetash configurations and hence is mandated to use the same name "harp_env" while installing the application.
 2. The below response:
   (OSC Install Script) Generating Module File Step: /users/PAS0536/swathivm/osc_apps/lmodfiles/harp/1.0.lua
 
