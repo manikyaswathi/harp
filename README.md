@@ -34,7 +34,7 @@ Selecting Appropriate Prediction Model: this module selects the most appropriate
  
 Installation
 ------------
-* Dependency: Linux, Python 3.9(only)
+* Dependency: Linux, Python 3.9(only), jq(command line JSOM parser https://stedolan.github.io/jq/)
 * On supercomputers it should be installed at a location accessible from the parallel file system
 * Follow these steps to set up Harp as a loadable software module on Ohio Supercomputer (OSC):
   ```bash
@@ -48,12 +48,12 @@ Installation
   conda remove --name harp-env --all
   ./cleanup.sh
   ```
-* Follow these steps to seto HARP framewok on a stand-alone linux system:
+* Follow the installtion prompts to proceed with the setup. This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas and scikit-learn and configures the Harp framework. It takes abiut 30-40 mins to finish the setup.
+* Follow these steps to setup HARP framewok on a stand-alone linux system:
   ```bash
   WILL ADD THESE 
   ```
-* Follow the installtion prompts to proceed with the setup. This setup installs CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas and scikit-learn and configures the Harp framework. It takes abiut 30-40 mins to finish the setup.
-* Harp has been tested on Ownes (OSC), and standalone Linux computers
+* Harp has been tested on Ownes (OSC), and standalone Linux system.
 
 ### Loading the HARP module 
    ```bash
@@ -67,11 +67,12 @@ Installation
 2. Edit path in post-script.sh to point to the target application directory
 3. Execute the framework as per the configurations in file 'train_config.json' as follows:
  ```bash
-  cd <path_to_application>/
+  cd <path_to_application>
   chmod 755 *
   harp <pipeline-configration>.json
   ```
-Please find the sample applications profling and estimations  under the example folder and follow their read-me files to execute the framework.
+4. The results of the framework are stores in rpredictions.json file uner the target application folder
+Please find the sample application under the example folder and follow it's read-me files to execute the framework against profiling and estimating the rsource needs. 
 
 NOTE
 -------------
