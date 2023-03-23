@@ -95,10 +95,11 @@ Releases
 The current release is [1.0](https://github.com/<RELEASE PATH>).
 
 ### Supported Systems
-System Name | Cheetah Support 
-:-----------| :---------------
-Local Linux machines | :white_check_mark: 
-Owens (OSC) | :white_check_mark: 
+System Name | Cheetah Support | CPU | GPU 
+:-----------| :---------------| :---------------| :---------------
+Local Linux machines | :white_check_mark: | :white_check_mark: 
+Owens (OSC) | :white_check_mark: | :white_check_mark: | :white_check_mark: 
+Pitzer (OSC) | :white_check_mark: | :white_check_mark: | :white_check_mark: 
 
 Authors
 -------
