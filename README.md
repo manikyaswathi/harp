@@ -36,7 +36,7 @@ Installation
 ------------
 * Dependency: Linux, Python 3.9(only)
 * On supercomputers it should be installed at a location accessible from the parallel file system
-* Fowwlow the steps to set up Harp as a loadable software module:
+* Follow the steps to set up Harp as a loadable software module:
   ```bash
   git clone https://github.com/ICICLE-ai/harp.git
   cd harp
@@ -104,3 +104,7 @@ Please open an issue on the [github issues](https://github.com/<PATH>/issues) pa
 License
 -------
 Harp is licensed under the https://opensource.org/licenses/BSD-3-Clause
+ 
+ # Acknowledgements
+
+*This work has been funded by grants from the National Science Foundation, including the ICICLE AI Institute (OAC 2112606)*
