@@ -22,7 +22,7 @@ The source code is contained in a single source file: [calc\_e.py](calc_e.py).
 There are no dependencies other than python3.
 
 # How to use HARP to estimate the walltime for the program calc_e.py?
-The current folder is called target application folder. 
+The current folder '01-eulers_number' is called target application folder. 
 
 1. Run the following commands (either in command line more or in sbatch script) to load HARP Module and set conda path
 ```bash
