@@ -1,7 +1,5 @@
 from PipelineModule import PipelineModule
-from .TrimmomaticPreprocessor import preprocess as trimmomatic_preprocess
-from .GrayScottPreprocessor import preprocess as gray_scott_preprocess
-from .DNNPreprocessor import preprocess as dnn_preprocess
+from .BasicAppPreprocessor import preprocess as basic_app_preprocess
 
 import os
 
@@ -10,6 +8,7 @@ class DataPreprocessor(PipelineModule):
     def __init__(self, config):
         super().__init__()
         self.application = str.lower(config["application"])
+        self.application_category = str.lower(config["application_category"])
         self.config = config
 
 
@@ -23,35 +22,22 @@ class DataPreprocessor(PipelineModule):
 
 
     def write_csv(self, dataset):
-        application_config = self.config["application_config"]
-        dataset.to_csv(application_config["dataset"], header = True, index = False)
+        application_config = self.config["pipeline_config"]
+        dataset.to_csv(application_config["dataset_pca"], header = True, index = False)
 
+        
+        
     def get_dataset_list(self):
-        application_config = self.config["application_config"]
-        train_path = application_config["train_folder"]
-        dataset_list = []
-        for file_name in os.listdir(train_path):
-            if file_name[-4:] == ".csv":
-                dataset_list.append(os.path.join(train_path, file_name))
-
-        return dataset_list
+        application_config = self.config["pipeline_config"] #pipeline_config
+        train_dataset = application_config["dataset"]
+        return [train_dataset]
 
 
     def execute(self):
         #TODO get dataset list
-        if self.application == "trimmomatic":
+        if self.application_category == "basic":
             dataset_list = self.get_dataset_list()
-            dataset = trimmomatic_preprocess(dataset_list)
-            self.write_csv(dataset)
-
-        elif self.application == "dnn":
-            dataset_list = self.get_dataset_list()
-            dataset = dnn_preprocess(dataset_list)
-            self.write_csv(dataset)
-
-        elif self.application == "grayscott":
-            dataset_list = self.get_dataset_list()
-            dataset = gray_scott_preprocess(dataset_list)
+            dataset = basic_app_preprocess(dataset_list)
             self.write_csv(dataset)
 
         else:

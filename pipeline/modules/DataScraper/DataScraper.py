@@ -1,5 +1,4 @@
 from PipelineModule import PipelineModule
-from .DNNScraper import scrape as dnn_scrape
 
 import os
 import re
@@ -12,6 +11,7 @@ class DataScraper(PipelineModule):
     def __init__(self, config):
         super().__init__()
         self.application = str.lower(config["application"])
+        self.application_category = str.lower(config["application_category"])
         self.config = config
 
     def get_csv_number(self, train_path):
@@ -46,8 +46,7 @@ class DataScraper(PipelineModule):
 
         df = pd.concat(dfs)
         return df
-
-
+        
 
     def finalize(self):
         regex = re.compile('_tmp_[0-9]+.pkl')
@@ -59,9 +58,11 @@ class DataScraper(PipelineModule):
 
 
     def execute(self):
-        if self.application == "trimmomatic":
-            print(f"DataScraper module is not required for {self.application}")
-        elif self.application == "dnn":
+        if self.application_category == "trimmomatic":
+            print(f"Advanced DataScraper module is not required for {self.application} under {self.application_category}")
+        if self.application_category == "basic":
+            print(f"Advanced DataScraper module is not required for {self.application} under {self.application_category}")
+        elif self.application_category == "dnn":
             dataframe = self.scrape_dnns()
             self.write_csv(dataframe)
         else:
@@ -69,6 +70,6 @@ class DataScraper(PipelineModule):
             exit()
 
         self.finalize()
-        print("INFO: DataScraper completed successfully")
+        print("INFO: Advanced DataScraper completed successfully")
 
 

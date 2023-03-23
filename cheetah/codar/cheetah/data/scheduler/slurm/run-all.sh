@@ -6,6 +6,13 @@ function error_exit
 	exit 1
 }
 
+
+function exit_exit
+{
+	echo "$1" 1>&2
+	exit 1
+}
+
 cd $(dirname $0)
 source campaign-env.sh || error_exit "Failed to load compaign-env.sh, aborting"
 
@@ -16,8 +23,10 @@ fi
 cd $CODAR_CHEETAH_EXPERIMENT_DIR || exit_exit "Missing experiment dir '$CODAR_CHEETAH_EXPERIMENT_DIR', aborting"
 group_dirs=$(find . -maxdepth 1 -mindepth 1 -type d)
 for group_dir in $group_dirs; do
-    echo "Submitting $group_dir"
-    cd "$group_dir" || exit_exit "Missing group dir '$group_dir', aborting"
-    ./submit.sh || exit_exit "Failed to submit group '$group_dir', aborting"
-    cd ..
+    if [[ $string != *"_Detail"* ]]; then
+        echo "Submitting $group_dir"
+        cd "$group_dir" || exit_exit "Missing group dir '$group_dir', aborting"
+        ./submit.sh || exit_exit "Failed to submit group '$group_dir', aborting"
+        cd ..
+    fi
 done

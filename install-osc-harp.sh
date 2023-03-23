@@ -1,18 +1,15 @@
 #!/bin/bash 
-# This is a simple install script derived from
-#   /users/PZS0645/support/share/install-script/install-osc_sample.sh
 
-# Command-line options:
-#-c | --config <config_file>:  Specify location of non-default config file to be used during installation.
+pwdir=`pwd`
 
-source /users/PZS0645/support/share/install-script/install-template.sh
+source install-script-source/install-template.sh
 
 VERIFY_FILES="
 cheetah/bin/cheetah
 "
 
 MULTISTEPS="" 
-initialize Harp 1.0
+initialize harp 1.0.0
 
 #dependencies modname1/modversion1 modname2/modversion2
 
@@ -76,13 +73,8 @@ configure_step() {
   conda activate harp_env
   echo "conda env activated"
   echo "inside configure step 2"
-  cd $installdir
+  # cd $installdir
 
-  # if [ ! -d "./cheetah" ] 
-  # then 
-  #     echo "Installing cheetah"
-  #     git clone https://github.com/CODARcode/cheetah.git
-  # fi
   cp -r $srcdir/cheetah $installdir
   # cd $srcdir/cheetah 
   cd $installdir/cheetah
@@ -98,7 +90,6 @@ configure_step() {
 
   #Copy Pipeline to install directory
   cp -r $srcdir/pipeline $installdir/
-  #TODO : add harp executable to /harp/1.0/bin
   mkdir $installdir/bin
   cp $srcdir/pipeline/harp $installdir/bin
 
