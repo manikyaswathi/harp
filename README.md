@@ -36,12 +36,17 @@ Installation
 ------------
 * Dependency: Linux, Python 3.9(only)
 * On supercomputers it should be installed at a location accessible from the parallel file system
-* Follow these steps to set up Harp as a loadable software module on Ohio Supercomputer:
+* Follow these steps to set up Harp as a loadable software module on Ohio Supercomputer (OSC):
   ```bash
   git clone https://github.com/ICICLE-ai/harp.git
   cd harp
   chmod 755 *
   ./install-osc-harp.sh
+  ```
+  If the installation fails for any reason, please re-run the script 'install-osc-harp.sh' after deleting the environmnet 'harp-env' and running the cleanup.sh in the install directory. 
+  ```bash
+  conda remove --name harp-env --all
+  ./cleanup.sh
   ```
 * Follow these steps to seto HARP framewok on a stand-alone linux system:
   ```bash
