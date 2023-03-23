@@ -1,16 +1,18 @@
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-HARP - full form
+HARP - HPC Application Resource Predictor
 ==============================================================
 
 Overview
 --------
 
-<DESCRIPOTION>
+Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like Ohio Supercomputer (OSC) or Texas Advanced Computing Center (TACC) to execute computationally intensive diverse scientific workflows. Some workflows are heavy on IO, like genome sequencing (cleaning and assembly), while others, like training DNNs, could be compute (and memory) intensive. Each workflow has a unique resource requirement, and it is essential to profile and understand these needs to allocate shared resources for optimal utilization of the cyberinfrastructure. These resources are expensive, and several jobs compete to get these allocations, sometimes with reasonable wait times (while requesting enormous resources for a long time). Estimating the expected resources for optimally utilizing the compute and memory is challenging especially considering the need for sufficient history to enable these predictions tailored for unique workflows and execution environments. We explored and established a framework (as showsn in Figure 1) that pipelines the solutions to address these challenges. The framework is configured to generate a history of executions and train suitable regression models to estimate the approximate execution time for a targeted application.
+
+![alt text](http://url/to/img.png)
 
 Installation
 ------------
-* Dependency: Linux, Python 3.9+, psutil
+* Dependency: Linux, Python 3.9(only)
 * On supercomputers it should be installed at a location accessible from the parallel file system
 * Fowwlow the steps to set up Harp as a loadable software module:
   ```bash
