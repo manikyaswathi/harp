@@ -36,7 +36,7 @@ Installation
 ------------
 * Dependency: Linux, Python 3.9(only), jq(command line JSOM parser https://stedolan.github.io/jq/)
 * On supercomputers it should be installed at a location accessible from the parallel file system
-* Follow these steps to set up Harp as a loadable software module on Ohio Supercomputer (OSC):
+* **Follow these steps to set up Harp as a loadable software module on Ohio Supercomputer (OSC):**
   ```bash
   git clone https://github.com/ICICLE-ai/harp.git
   cd harp
@@ -48,8 +48,8 @@ Installation
   conda remove --name harp-env --all
   ./cleanup.sh
   ```
-* Follow the installtion prompts to proceed with the setup. This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas and scikit-learn and configures the Harp framework. It takes abiut 30-40 mins to finish the setup.
-* Follow these steps to setup HARP framewok on a stand-alone linux system:
+** Follow the installtion prompts to proceed with the setup. This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas and scikit-learn and configures the Harp framework. It takes abiut 30-40 mins to finish the setup.
+* **Follow these steps to setup HARP framewok on a stand-alone linux system:**
   ```bash
   WILL ADD THESE 
   ```
