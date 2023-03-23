@@ -92,7 +92,7 @@ Documentation
 
 Releases
 --------
-The current release is [1.0](https://github.com/<RELEASE PATH>).
+The current release is [1.0.0](https://github.com/<RELEASE PATH>).
 
 ### Supported Systems
 System Name | Cheetah Support | CPU | GPU 
