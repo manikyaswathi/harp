@@ -8,8 +8,30 @@ Overview
 
 Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like Ohio Supercomputer (OSC) or Texas Advanced Computing Center (TACC) to execute computationally intensive diverse scientific workflows. Some workflows are heavy on IO, like genome sequencing (cleaning and assembly), while others, like training DNNs, could be compute (and memory) intensive. Each workflow has a unique resource requirement, and it is essential to profile and understand these needs to allocate shared resources for optimal utilization of the cyberinfrastructure. These resources are expensive, and several jobs compete to get these allocations, sometimes with reasonable wait times (while requesting enormous resources for a long time). Estimating the expected resources for optimally utilizing the compute and memory is challenging especially considering the need for sufficient history to enable these predictions tailored for unique workflows and execution environments. We explored and established a framework (as showsn in Figure 1) that pipelines the solutions to address these challenges. The framework is configured to generate a history of executions and train suitable regression models to estimate the approximate execution time for a targeted application.
 
-![alt text](http://url/to/img.png)
 
+<!-- 
+![alt text](https://github.com/manikyaswathi/harp/tree/main/Documents/HARP_Pipeline.png?raw=true)
+
+![alt text](https://github.com/manikyaswathi/harp/tree/main/Documents/Folder_Structure.png?raw=true)
+
+ -->
+ 
+ ![HARP Pipeline](Documents/HARP_Pipeline.png)
+  Figure 1: The Proposed Framework: training data generation, building regression models & selecting the best model based on custom criteria
+  
+  
+**Components and Characteristics of the framework (from figure 1)**:
+Generating and Preparing Training Data: This module automatically and systematically generates comprehensive, diverse "scaled-down(SD)" and limited, selective "full-scale(FS)" runs with minimal human intervention. We use Cheetah (https://github.com/CODARcode/cheetah) to execute the target application with the pre-defined data generation configurations (SD and FS) to generate the history-of-runs training data.
+Building Regression Models: This module standardizes and prepares the data, trains the selected off-the-shelf regression models with the appropriate hyper-parameters, and stores them for inference. In this phase, the data generated in the first phase is processed to train regression models. Redundant features are eliminated, outliers are removed, and features are transformed to reduce the dimensionality before training the regression models. 
+Selecting Appropriate Prediction Model: this module selects the most appropriate regression model from a pool of trained models from phase 2 with respect to a given policy and target application
+  
+  
+ ![Application Folder Structure and Files](Documents/Folder_Structure.png)
+ Figure 2: Shows the target-application execution endpoint and the harp application folder structure. 
+
+ 
+ 
+ 
 Installation
 ------------
 * Dependency: Linux, Python 3.9(only)
