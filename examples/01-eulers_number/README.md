@@ -37,8 +37,8 @@ export CONDA_HOME=/users/PAS0536/swathivm/miniconda3
   harp pipeline_config.json
 ```
 3. The framework performs the following operations
-a. Generates training data with three different configurations (scaled-down, full-scale and test-data), copies it to the pipeline/applications/<application-name>/train folder for furher processing
-b. It pre-porcesses the data and transforms the training data using princple component analysis, upsamples full-scale executions to match scaled-down training samples and trains and stores the regression models with different configurations
-c. The regression model with better predictions (lower no. of under-predictions and lwer MAPE of over-estimations) suitable for euler training data is slected, and is used to predict the walltime estimations for thr test-data configurations.
+  a. Generates training data with three different configurations (scaled-down, full-scale and test-data), copies it to the pipeline/applications/<application-name>/train folder for furher processing
+  b. It pre-porcesses the data and transforms the training data using princple component analysis, upsamples full-scale executions to match scaled-down training samples and trains and stores the regression models with different configurations
+  c. The regression model with better predictions (lower no. of under-predictions and lwer MAPE of over-estimations) suitable for euler training data is slected, and is used to predict the walltime estimations for thr test-data configurations.
 The results of the frameowrk are stores in predictions.csv in the target application folder.
 
