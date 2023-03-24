@@ -12,6 +12,6 @@ module use $HOME/osc_apps/lmodfiles
 module load harp 
 export CONDA_HOME=<path_to_conda_home>/miniconda3
 cd <path_to_harp_download>/harp/examples/01-eulers_number
-harp train_config.json
+harp pipeline_config.json
 
 
