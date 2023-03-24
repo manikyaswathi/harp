@@ -1,7 +1,7 @@
 {
     "application": "euler",
     "application_category": "basic",
-    "cheetah_app_directory": "/fs/scratch/PAS0536/Swathi/InstallerTest/harp/examples/01-eulers_number",
+    "cheetah_app_directory": "/<download_dir>/harp/examples/01-eulers_number",
     "modules_to_run": ["build", "predict"],
     "runs":
     [
@@ -9,19 +9,19 @@
         "wait_time": 5,
         "paths": {
         "cheetah_campaign_name": "pipeline_campaign_euler_SD_002",
-        "cheetah_campaign_file": "/fs/scratch/PAS0536/Swathi/InstallerTest/harp/examples/01-eulers_number/cheetah_campaign_SD.py" }
+        "cheetah_campaign_file": "/<download_dir>/harp/examples/01-eulers_number/cheetah_campaign_SD.py" }
     },
     {   "type": "FS",
         "wait_time": 5,
         "paths": {
         "cheetah_campaign_name": "pipeline_campaign_euler_FS_002",
-        "cheetah_campaign_file": "/fs/scratch/PAS0536/Swathi/InstallerTest/harp/examples/01-eulers_number/cheetah_campaign_FS.py" }
+        "cheetah_campaign_file": "/<download_dir>/harp/examples/01-eulers_number/cheetah_campaign_FS.py" }
     },
     {   "type": "test_data",
         "wait_time": 5,
         "paths": {
         "cheetah_campaign_name": "pipeline_campaign_euler_test_002",
-        "cheetah_campaign_file": "/fs/scratch/PAS0536/Swathi/InstallerTest/harp/examples/01-eulers_number/cheetah_campaign_test.py"}
+        "cheetah_campaign_file": "/<download_dir>/harp/examples/01-eulers_number/cheetah_campaign_test.py"}
     }
     ],
     "cheetah_campaign_machine": "owens_gpu",
