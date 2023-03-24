@@ -2,7 +2,7 @@
     "application": "euler",
     "application_category": "basic",
     "cheetah_app_directory": "/<download_dir>/harp/examples/01-eulers_number",
-    "modules_to_run": ["build", "predict"],
+    "modules_to_run": ["generate", "build", "predict"],
     "runs":
     [
     {   "type": "SD",
