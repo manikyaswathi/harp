@@ -34,39 +34,50 @@ Selecting Appropriate Prediction Model: this module selects the most appropriate
  
 Installation
 ------------
-* Dependency: Linux, Python 3.9(only)
+* Dependency: Linux, Python 3.9(only), jq(command line JSOM parser https://stedolan.github.io/jq/)
 * On supercomputers it should be installed at a location accessible from the parallel file system
-* Follow the steps to set up Harp as a loadable software module:
+* **Follow these steps to set up Harp as a loadable software module on Ohio Supercomputer (OSC):**
   ```bash
   git clone https://github.com/ICICLE-ai/harp.git
   cd harp
   chmod 755 *
   ./install-osc-harp.sh
   ```
-* Follow the installtion prompts to proceed with the setup. This setup installs CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas and scikit-learn and configures the Harp framework. It takes abiut 30-40 mins to finish the setup.
-* Harp has been tested on Ownes (OSC), and standalone Linux computers
+  If the installation fails for any reason, please re-run the script 'install-osc-harp.sh' after deleting the environmnet 'harp-env' and running the cleanup.sh in the install directory. 
+  ```bash
+  conda remove --name harp-env --all
+  ./cleanup.sh
+  ```
+** Follow the installtion prompts to proceed with the setup. This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas and scikit-learn and configures the Harp framework. It takes abiut 30-40 mins to finish the setup.
+* **Follow these steps to setup HARP framewok on a stand-alone linux system:**
+  ```bash
+  WILL ADD THESE 
+  ```
+* Harp has been tested on Ownes (OSC), and standalone Linux system.
 
-### Loading the HARP module to execute
+### Loading the HARP module 
    ```bash
   module use $HOME/osc_apps/lmodfiles
   module load harp 
   export CONDA_HOME=<path_to_miniconda>/miniconda3
-  harp <Confilguration-file.json>
    ```
    
 ### Using HARP to profile an application and predict execution time
-We use a sinple python program to compute the euler number as a target application to profile by using the following script
+1. Navigate to the target application folder and copy the all the files from /Post_Execution_Scripts/basic into the the current folder. For more details about the type of application categories and profiling, please read the document or PPT <ADD LINK>. 
+2. Edit path in post-script.sh to point to the target application directory
+3. Execute the framework as per the configurations in file 'train_config.json' as follows:
  ```bash
-  cd <path_to_application>/01-eulers_number
+  cd <path_to_application>
   chmod 755 *
-  harp train_config.json
+  harp <pipeline-configration>.json
   ```
-The eulers number and other examples could be found in folder "examples"
+4. The results of the framework are stores in rpredictions.json file uner the target application folder
+Please find the sample application under the example folder and follow it's read-me files to execute the framework against profiling and estimating the rsource needs. 
 
 NOTE
 -------------
 Things to consider while using the framework
-1. The installer creates a conda environmnet "harp_env" and uses this environmentto execute the framework. Please delete the evironment if it already exists with this name for this version of framework. It uses the name "harp_env" at couple of places hardcoded (while executing CODARCheetah) and hence is mandated to use the same environment name for this release. 
+1.[OSC Installation] The installer creates a conda environmnet "harp_env" on OSC and uses this environment to execute the framework. Please delete the evironment if it already exists with this name for this version of framework. The enviroment name is used in a couple of Cheetash configurations and hence is mandated to use the same name "harp_env" while installing the application.
 2. The below response:
   (OSC Install Script) Generating Module File Step: /users/PAS0536/swathivm/osc_apps/lmodfiles/harp/1.0.lua
 
@@ -81,13 +92,14 @@ Documentation
 
 Releases
 --------
-The current release is [1.0](https://github.com/<RELEASE PATH>).
+The current release is [1.0.0](https://github.com/<RELEASE PATH>).
 
 ### Supported Systems
-System Name | Cheetah Support 
-:-----------| :---------------
-Local Linux machines | :white_check_mark: 
-Owens (OSC) | :white_check_mark: 
+System Name | Cheetah Support | CPU | GPU 
+:-----------| :---------------| :---------------| :---------------
+Local Linux machines | :white_check_mark: | :white_check_mark: 
+Owens (OSC) | :white_check_mark: | :white_check_mark: | :white_check_mark: 
+Pitzer (OSC) | :white_check_mark: | :white_check_mark: | :white_check_mark: 
 
 Authors
 -------
@@ -104,6 +116,7 @@ Please open an issue on the [github issues](https://github.com/<PATH>/issues) pa
 License
 -------
 Harp is licensed under the https://opensource.org/licenses/BSD-3-Clause
+
  
  # Acknowledgements
 
