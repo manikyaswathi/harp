@@ -40,7 +40,7 @@ Installation
   ```bash
   git clone https://github.com/ICICLE-ai/harp.git
   cd harp
-  chmod 755 *
+  chmod 755 install-osc-harp.sh
   ./install-osc-harp.sh
   ```
   If the installation fails for any reason, please re-run the script 'install-osc-harp.sh' after deleting the environmnet 'harp-env' and running the cleanup.sh in the install directory. 
