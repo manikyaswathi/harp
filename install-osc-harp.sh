@@ -55,6 +55,7 @@ configure_step() {
   if [ ! -d "$HOME/miniconda3" ] 
   then 
     echo "conda doesnot exists"
+    # wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -P $installdir
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -P $installdir
     bash $installdir/Miniconda3-latest-Linux-x86_64.sh
     echo "conda is installed"
