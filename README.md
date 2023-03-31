@@ -53,7 +53,7 @@ Installation
   conda remove --name harp-env --all
   ./cleanup.sh
   ```
-This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas, and scikit-learn and configures the Harp framework. Follow the installation prompts to proceed with the setup. It takes about 30-40 mins to finish the setup.
+This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas, and scikit-learn and configures the Harp framework. Follow the installation prompts to proceed with the setup. This installation takes about 30-40 mins to finish the setup on Owens login-node.
 * **Follow these steps to setup the HARP framework on a standalone Linux system:**
   ```bash
   pip install psutil
