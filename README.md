@@ -135,4 +135,4 @@ The HARP is licensed under the https://opensource.org/licenses/BSD-3-Clause
  
  # Acknowledgements
 
-*This work has been funded by grants from the National Science Foundation, including the ICICLE AI Institute (OAC 2112606)*
+*This work has been funded by grants from the National Science Foundation, including the ICICLE AI Institute (OAC 2112606) and EAGER (OAC 1945347)*
