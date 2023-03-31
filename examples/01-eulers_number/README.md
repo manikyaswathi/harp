@@ -24,13 +24,15 @@ There are no dependencies other than python3.
 # How to use HARP to estimate the walltime for the program calc_e.py?
 The current folder '01-eulers_number' is called target application folder. 
 
-1. Run the following commands (either in command line more or in sbatch script) to load HARP Module and set conda path
+1. Navigate to the target application folder and copy the all the files from /Post_Execution_Scripts/basic into the the current folder. For more details about the type of application categories and profiling, please read the document or PPT .
+2. Edit the paths in "post_script.sh" to point to this folder (the target application folder). 
+3. Run the following commands (either in command line more or in sbatch script) to load HARP Module and set conda path
 ```bash
 module use $HOME/osc_apps/lmodfiles
 module load harp 
-export CONDA_HOME=/users/PAS0536/swathivm/miniconda3
+export CONDA_HOME=<path-to-conda-install>/miniconda3
 ```
-2. Run the following commands (either in command line more or in sbatch script) to execute the framwork from the target application folder
+4. Run the following commands (either in command line more or in sbatch script) to execute the framwork from the target application folder
 ```bash
   cd <path to 01-eulers_number folder>
   chmod 755 *
