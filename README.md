@@ -100,22 +100,16 @@ Please find the sample application under the example folder and follow the read-
 NOTE
 -------------
 Things to consider while using the framework
-1.[OSC Installation] The installer creates a conda environment, "harp_env" on OSC and uses this environment to execute the framework. The environment name is used in a couple of Cheetash configurations and hence is mandated to use the same name, "harp_env," while installing the application. Please delete the environment if it already exists with this name before installing the framework.
-2. The below response:
+ 1.[OSC Installation] The installer creates a conda environment, "harp_env" on OSC and uses this environment to execute the framework. The environment name is used in a couple of Cheetash configurations and hence is mandated to use the same name, "harp_env," while installing the application. Please delete the environment if it already exists with this name before installing the framework.
+ 2. The below response:
   (OSC Install Script) Generating Module File Step: /users/PAS0536/swathivm/osc_apps/lmodfiles/harp/1.0.lua
-
   (OSC Install Script) Generating Module File Step Finished
   Finished at Thu Mar 16 11:44:13 EDT 2023
   Execution time: 1965 seconds
 
-Documentation
--------------
-<LINK TO VIDEO> 
-<LINK TO PPT>
-
 Releases
 --------
-The current release is [1.0.0](https://github.com/<RELEASE PATH>).
+The current release is [1.0.0](https://github.com/ICICLE-ai/harp).
 
 ### Supported Systems
 System Name | Cheetah Support | CPU | GPU 
@@ -126,7 +120,9 @@ Pitzer (OSC) | :white_check_mark: | :white_check_mark: | :white_check_mark:
 
 Citing Harp
 --------------
-<Paper>
+Vallabhajosyula, Manikya Swathi, and Rajiv Ramnath. "Towards Practical, Generalizable Machine-Learning Training Pipelines to build Regression Models for Predicting Application Resource Needs on HPC Systems." Practice and Experience in Advanced Research Computing. 2022. 1-5.
+
+ Vallabhajosyula, Swathi, and Rajiv Ramnath. "Establishing a Generalizable Framework for Generating Cost-Aware Training Data and Building Unique Context-Aware Walltime Prediction Regression Models." 20th IEEE International Symposium on Parallel and Distributed Processing with Applications (ISPA 2022). December 2022
 
 Reporting Bugs
 --------------
