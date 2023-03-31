@@ -28,7 +28,9 @@ Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like 
 **Selecting Appropriate Prediction Model:** this module selects the most appropriate regression model from a pool of trained models from phase 2 with respect to a given policy and target application
   
   
- ![Application Folder Structure and Files](Documents/Folder_Structure.png)
+<!--  ![Application Folder Structure and Files](Documents/Folder_Structure.png) -->
+ 
+ <img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/Folder_Structure.png" width=50% height=50%>
  Figure 2: Shows the target-application execution endpoint and the harp application folder structure. 
 
  
