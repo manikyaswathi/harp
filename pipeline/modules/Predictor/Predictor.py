@@ -143,6 +143,14 @@ class Predictor():
         
         self.results.to_csv(self.savepath_one+'/'+self.savefile, header=True, index=False)
         self.results.to_csv(self.savepath_two+'/'+self.savefile, header=True, index=False)
+
+        f = open(self.savepath_two+"/prediction_summary.txt", "w")
+        f.write("*** The details of the model and dataset used for predictions ***")
+        f.write("\nThe saved model used for predictions:"+self.model)
+        f.write("\nThe dataset used for predictions:"+self.dsType)
+        f.write("\nThe Regression model used for predictions:"+self.modelType)
+        f.write("\nThe validation adjustment used for predictions:"+str(self.VA))
+        f.close()
     
     
     def execute(self):

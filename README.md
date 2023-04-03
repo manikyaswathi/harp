@@ -67,14 +67,15 @@ This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheet
   ```
     Ensure the scripts have '**execute**' privileges
   ```bash
-  cd <install-dir>/harp/pipeline
+  cd <install-dir>/harp/pipeline/bin/local
   chmod 755 harp
   cd <install-dir>/cheetah/bin
   chmod 755 *
   ```
-  Set the HARP pipeline and Cheetah binaries in the PATH
+  Set the HARP pipeline and Cheetah binaries in the PATH and set the install-dir in HARP_HOME
   ```bash
-  export PATH=<install-dir>/harp/pipeline:<install-dir>/cheetah/bin:$PATH
+  export PATH=<install-dir>/harp/pipeline/bin/local:<install-dir>/cheetah/bin:$PATH
+  export HARP_HOME=<install-dir>
   ```
 * Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
 
