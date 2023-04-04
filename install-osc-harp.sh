@@ -93,7 +93,7 @@ configure_step() {
   #Copy Pipeline to install directory
   cp -r $srcdir/pipeline $installdir/
   mkdir $installdir/bin
-  cp $srcdir/pipeline/harp $installdir/bin
+  cp $srcdir/pipeline/bin/OSC/harp $installdir/bin
 
 
 }

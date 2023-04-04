@@ -1,9 +1,6 @@
 #!/usr/bin/bash
 
-source $CONDA_HOME/bin/activate
-source activate harp_env
-
-export PIPELINE_HOME=$HOME/osc_apps/harp/1.0.0/pipeline
+export PIPELINE_HOME=$HARP_HOME/pipeline
 
 application=$(cat $1 | jq '.application' | tr -d '"')
 application_category=$(cat $1 | jq '.application_category' | tr -d '"')
@@ -74,10 +71,10 @@ for str in ${modules_to_run[@]}; do
         echo "Done Generating Training data"
 
         #STEP A-2:
-        python ScrapeCSV.py $application ${list_training_data[@]}
+        python3 ScrapeCSV.py $application ${list_training_data[@]}
         
         # run data Scrapper - TODO for incremental add on
-        python $PIPELINE_HOME/modules/pipeline.py --module data_scraper --config $1
+        python3 $PIPELINE_HOME/modules/pipeline.py --module data_scraper --config $1
         echo "************************************************************************************"
     fi
     if [ "test" == "$str" ]
@@ -92,10 +89,10 @@ for str in ${modules_to_run[@]}; do
         echo "------------------------------------------------------------------------------------"
         # STEP B-0
         # run data preprocessor 
-        python $PIPELINE_HOME/modules/pipeline.py --module data_preprocessor --config $1
+        python3 $PIPELINE_HOME/modules/pipeline.py --module data_preprocessor --config $1
         # STEP B-1
         # run model trainer, let this read metadata and decide on making a new model.
-        python $PIPELINE_HOME/modules/pipeline.py --module model_trainer --config $1
+        python3 $PIPELINE_HOME/modules/pipeline.py --module model_trainer --config $1
         echo "************************************************************************************"
     fi
     if [ "predict" == "$str" ]
@@ -106,13 +103,9 @@ for str in ${modules_to_run[@]}; do
         # STEP C
         # Run predictor
         echo "I AM IN PREDICT"
-        python $PIPELINE_HOME/modules/pipeline.py --module predictor --config $1
+        python3 $PIPELINE_HOME/modules/pipeline.py --module predictor --config $1
         echo "************************************************************************************"
     fi
 done
 
 echo "DONE EXECUTING THE PIPELINE"
-
-
-
-
