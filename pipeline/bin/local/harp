@@ -1,9 +1,6 @@
 #!/usr/bin/bash
 
-source $CONDA_HOME/bin/activate
-source activate harp_env
-
-export PIPELINE_HOME=$HOME/osc_apps/harp/1.0.0/pipeline
+export PIPELINE_HOME=$HARP_HOME/pipeline
 
 application=$(cat $1 | jq '.application' | tr -d '"')
 application_category=$(cat $1 | jq '.application_category' | tr -d '"')
@@ -112,7 +109,3 @@ for str in ${modules_to_run[@]}; do
 done
 
 echo "DONE EXECUTING THE PIPELINE"
-
-
-
-
