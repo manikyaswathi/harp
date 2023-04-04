@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pwd 
+
 scapper_file=DataScrapper.py
 
 cp /<downlaod-dir>/harp/examples/01-eulers_number/$scapper_file $scapper_file
