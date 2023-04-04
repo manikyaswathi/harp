@@ -17,8 +17,8 @@ Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like 
  -->
  
 <!--  ![HARP Pipeline](Documents/HARP_Pipeline.png) -->
-<img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/HARP_Pipeline.png" alt="HARP Pipeline" width=75% height=75%>
-Figure 1: The Proposed Framework: training data generation, building regression models & selecting the best model based on custom criteria
+<img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/HARP_Pipeline.png" alt="HARP Pipeline" width=75% height=75% class="center">
+          Figure 1: The Proposed Framework: training data generation, building regression models & selecting the best model based on custom criteria
   
   
 **Components and Characteristics of the framework (from figure 1)**:
@@ -31,8 +31,8 @@ Figure 1: The Proposed Framework: training data generation, building regression 
   
 <!--  ![Application Folder Structure and Files](Documents/Folder_Structure.png) -->
  
-<img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/Folder_Structure.png" alt="Application Folder Structure and Files" width=75% height=75%>
-Figure 2: Shows the target-application execution endpoint and the harp application folder structure. 
+<img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/Folder_Structure.png" alt="Application Folder Structure and Files" width=75% height=75% class="center">
+              Figure 2: Shows the target-application execution endpoint and the harp application folder structure. 
 
  
  
@@ -53,7 +53,7 @@ Installation
   conda remove --name harp-env --all
   ./cleanup.sh
   ```
-This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas, and scikit-learn and configures the Harp framework. Follow the installation prompts to proceed with the setup. It takes about 30-40 mins to finish the setup.
+This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas, and scikit-learn and configures the Harp framework. Follow the installation prompts to proceed with the setup. This installation takes about 30-40 mins to finish the setup on Owens login-node.
 * **Follow these steps to setup the HARP framework on a standalone Linux system:**
   ```bash
   pip install psutil
@@ -136,4 +136,4 @@ The HARP is licensed under the https://opensource.org/licenses/BSD-3-Clause
  
  # Acknowledgements
 
-*This work has been funded by grants from the National Science Foundation, including the ICICLE AI Institute (OAC 2112606)*
+*This work has been funded by grants from the National Science Foundation, including the ICICLE AI Institute (OAC 2112606) and EAGER (OAC 1945347)*
