@@ -15,7 +15,7 @@ The current folder '01-eulers_number' is called target application folder.
 1. Navigate to the target application folder and copy the all the files from /Post_Execution_Scripts/basic into the the current folder. For more details about the type of application categories and profiling, please read the document or PPT .
 2. Edit the paths in "post_script.sh" to point to this folder (the target application folder). 
 3. Edit the follwoing files bedore profiling the application
-   - Set the OSC project account in the campaign files "*_campaign_*.py". 
+   - If running the pipelnine on OSC, set the OSC project account in the campaign files "*_campaign_*.py". Ignore otherwise.
     ```
       class GrayScott(Campaign):
         ...
