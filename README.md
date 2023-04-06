@@ -100,9 +100,9 @@ Please find the sample application under the example folder and follow the read-
 
 NOTE
 -------------
-Things to consider while using the framework
- 1.[OSC Installation] The installer creates a conda environment, "harp_env" on OSC and uses this environment to execute the framework. The environment name is used in a couple of Cheetash configurations and hence is mandated to use the same name, "harp_env," while installing the application. Please delete the environment if it already exists with this name before installing the framework.
- 2. The below response:
+Things to consider while installing the framework on OSC
+1. [OSC Installation] The installer creates a conda environment, "harp_env" on OSC and uses this environment to execute the framework. The environment name is used in a couple of Cheetash configurations and hence is mandated to use the same name, "harp_env," while installing the application. Please delete the environment if it already exists with this name before installing the framework.
+2. Upon successful installation, the install script with retuen the below response:
   (OSC Install Script) Generating Module File Step: /users/PAS0536/swathivm/osc_apps/lmodfiles/harp/1.0.lua
   (OSC Install Script) Generating Module File Step Finished
   Finished at Thu Mar 16 11:44:13 EDT 2023
