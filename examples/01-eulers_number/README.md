@@ -22,7 +22,7 @@ The current folder '01-eulers_number' is called target application folder.
         scheduler_options = {'owens_gpu': {'project':'<OSC-project-account>'}}
         ...
     ```
-   - Adjust the paths for the "cheetah_app_directory" and "cheetah_campaign_file" keys in "pipeline_config.json" file to pointto the current directory.
+   - Adjust the paths for the **cheetah_app_directory** and ((cheetah_campaign_file** keys in pipeline_config.json file to pointto the current directory.
     
 4. Run the following commands (either in command line more or in sbatch script) to load HARP Module and activate the environmnet (** Only for OSC **)
   ```bash
