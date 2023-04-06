@@ -32,7 +32,7 @@ class GrayScott(Campaign):
     umask = '027' #027
 
     # Options for the underlying scheduler on the target system. Specify the project ID and job queue here.
-    scheduler_options = {'owens_gpu': {'project':'PAS0536'}}
+    scheduler_options = {'owens_gpu': {'project':'<OSC-Project-Account>'}}
 
     # A way to setup your environment before the experiment runs. Export environment variables such as LD_LIBRARY_PATH here.
     #app_config_scripts = {'local': 'setup.sh', 'theta': 'env_setup.sh'}
