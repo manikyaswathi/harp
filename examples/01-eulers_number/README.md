@@ -16,13 +16,14 @@ The current folder '01-eulers_number' is called target application folder.
 2. Edit the paths in "post_script.sh" to point to this folder (the target application folder). 
 3. Edit the follwoing files bedore profiling the application
    - Set the OSC project account in the campaign files "*_campaign_*.py". 
-     ```
+    ```
       class GrayScott(Campaign):
         ...
         scheduler_options = {'owens_gpu': {'project':'<OSC-project-account>'}}
         ...
     ```
    - Adjust the paths for the "cheetah_app_directory" and "cheetah_campaign_file" keys in "pipeline_config.json" file to pointto the current directory.
+    
 4. Run the following commands (either in command line more or in sbatch script) to load HARP Module and activate the environmnet (** Only for OSC **)
   ```bash
   module use $HOME/osc_apps/lmodfiles
