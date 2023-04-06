@@ -1,10 +1,8 @@
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 # HARP - HPC Application Resource Predictor
-==============================================================
 
 ## Overview
---------
 
 Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like Ohio Supercomputer (OSC) or Texas Advanced Computing Center (TACC) to execute computationally intensive diverse scientific workflows. Some workflows are heavy on IO, like genome sequencing (cleaning and assembly), while others, like training DNNs, could be compute (and memory) intensive. Each workflow has a unique resource requirement, and it is essential to profile and understand these needs to allocate shared resources for optimal utilization of the cyberinfrastructure. These resources are expensive, and several jobs compete to get these allocations, sometimes with reasonable wait times (while requesting enormous resources for a long time). Estimating the expected resources for optimally utilizing the compute and memory is challenging especially considering the need for sufficient history to enable these predictions tailored for unique workflows and execution environments. We explored and established a framework (as shown in Figure 1) that pipelines the solutions to address these challenges. The framework is configured to generate a history of executions and train suitable regression models to estimate the approximate execution time for a targeted application.
 
@@ -35,8 +33,6 @@ Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like 
               Figure 2: Shows the target-application execution endpoint and the harp application folder structure. 
 
  
- 
- 
 ## Installation
 * Dependency: Linux, Python 3.9+, git, pip, mpich, psutil, jq(command line JSOM parser https://stedolan.github.io/jq/)
 * On supercomputers (OSC), it should be installed at a location accessible from the parallel file system
@@ -62,6 +58,7 @@ This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheet
   source activate harp_env
    ```
 **NOTE**
+
 Things to consider while installing the framework on OSC
 1. [OSC Installation] The installer creates a conda environment, "harp_env" on OSC and uses this environment to execute the framework. The environment name is used in a couple of Cheetash configurations and hence is mandated to use the same name, "harp_env," while installing the application. Please delete the environment if it already exists with this name before installing the framework.
 2. Upon successful installation, the install script with retuen the below response:
@@ -71,37 +68,38 @@ Things to consider while installing the framework on OSC
  Execution time: 1965 seconds
 
 ### **Follow these steps to setup the HARP framework on a standalone Linux system:**
+* Use the below commannds to install the dependencies using pip
   ```bash
   pip install psutil
   pip install tensorflow
   pip install pandas
   pip install scikit-learn
   ```
-  Download the source code into the <install-dir>
+* Download the source code into the <install-dir>
   ```bash
   git clone https://github.com/ICICLE-ai/harp.git
   ```
-  Install Cheetah
+* Install Cheetah
   ```bash
   cd <install-dir>/harp/cheetah
   pip install --editable .
   ```
-  Ensure the scripts have '**execute**' privileges
+* Ensure the scripts have '**execute**' privileges
   ```bash
   cd <install-dir>/harp/pipeline/bin/local
   chmod 755 harp
   cd <install-dir>/harp/cheetah/bin
   chmod 755 *
   ```
-  Set the HARP pipeline and Cheetah binaries in the PATH and set the install-dir in HARP_HOME
+* Set the HARP pipeline and Cheetah binaries in the PATH and set the install-dir in HARP_HOME
   ```bash
   export PATH=<install-dir>/harp/pipeline/bin/local:<install-dir>/cheetah/bin:$PATH
   export HARP_HOME=<install-dir>
   ```
- The HARP pipeline is ready to used once the binaries are set in PATH. 
+ The HARP pipeline is ready to used once the HARP_HOME and binaries are set in PATH. 
  
  
-* Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
+Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
 
    
 ### Using HARP to profile an application and predict the execution time
