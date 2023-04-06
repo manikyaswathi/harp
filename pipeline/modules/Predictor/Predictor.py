@@ -127,6 +127,7 @@ class Predictor():
         
         y_pred_pca = loaded_model.predict(X_pca)
         y_pred_pca = y_pred_pca*self.VA
+        y_pred_pca = y_pred_pca.flatten()
         
         mse, mae, mape, upp, up_mape, ov_mape = get_scores(y_pca, y_pred_pca, printIt=PRINT_RESULT)
         
