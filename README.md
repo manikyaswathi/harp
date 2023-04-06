@@ -19,12 +19,10 @@ Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like 
           Figure 1: The Proposed Framework: training data generation, building regression models & selecting the best model based on custom criteria
   
   
-**Components and Characteristics of the framework (from figure 1)**:
-**Generating and Preparing Training Data:** This module automatically and systematically generates comprehensive, diverse "scaled-down(SD)" and limited, selective "full-scale(FS)" runs with minimal human intervention. We use Cheetah (https://github.com/CODARcode/cheetah) to execute the target application with the pre-defined data generation configurations (SD and FS) to generate the history-of-runs training data.
-
-**Building Regression Models:** This module standardizes and prepares the data, trains the selected off-the-shelf regression models with the appropriate hyper-parameters, and stores them for inference. In this phase, the data generated in the first phase is processed to train regression models. Redundant features are eliminated, outliers are removed, and features are transformed to reduce the dimensionality before training the regression models. 
-
-**Selecting Appropriate Prediction Model:** this module selects the most appropriate regression model from a pool of trained models from phase 2 with respect to a given policy and target application
+### Components and Characteristics of the framework (from figure 1):
+1. **Generating and Preparing Training Data:** This module automatically and systematically generates comprehensive, diverse "scaled-down(SD)" and limited, selective "full-scale(FS)" runs with minimal human intervention. We use Cheetah (https://github.com/CODARcode/cheetah) to execute the target application with the pre-defined data generation configurations (SD and FS) to generate the history-of-runs training data.
+2. **Building Regression Models:** This module standardizes and prepares the data, trains the selected off-the-shelf regression models with the appropriate hyper-parameters, and stores them for inference. In this phase, the data generated in the first phase is processed to train regression models. Redundant features are eliminated, outliers are removed, and features are transformed to reduce the dimensionality before training the regression models. 
+3. **Selecting Appropriate Prediction Model:** this module selects the most appropriate regression model from a pool of trained models from phase 2 with respect to a given policy and target application
   
   
 <!--  ![Application Folder Structure and Files](Documents/Folder_Structure.png) -->
