@@ -41,7 +41,7 @@ Installation
 ------------
 * Dependency: Linux, Python 3.9+, git, pip, mpich, psutil, jq(command line JSOM parser https://stedolan.github.io/jq/)
 * On supercomputers (OSC), it should be installed at a location accessible from the parallel file system
-* **Follow these steps to set up Harp as a loadable software module on Ohio Supercomputer (OSC):**
+# **Follow these steps to set up Harp as a loadable software module on Ohio Supercomputer (OSC):**
   ```bash
   git clone https://github.com/ICICLE-ai/harp.git
   cd harp
@@ -54,6 +54,13 @@ Installation
   ./cleanup.sh
   ```
 This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas, and scikit-learn and configures the Harp framework. Follow the installation prompts to proceed with the setup. This installation takes about 30-40 mins to finish the setup on Owens login-node.
+#$ Loading the HARP module 
+   ```bash
+  module use $HOME/osc_apps/lmodfiles
+  module load harp 
+  export CONDA_HOME=<path_to_miniconda>/miniconda3
+   ```
+
 * **Follow these steps to setup the HARP framework on a standalone Linux system:**
   ```bash
   pip install psutil
@@ -79,12 +86,16 @@ This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheet
   ```
 * Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
 
-### Loading the HARP module 
-   ```bash
-  module use $HOME/osc_apps/lmodfiles
-  module load harp 
-  export CONDA_HOME=<path_to_miniconda>/miniconda3
-   ```
+
+NOTE
+-------------
+Things to consider while installing the framework on OSC
+1. [OSC Installation] The installer creates a conda environment, "harp_env" on OSC and uses this environment to execute the framework. The environment name is used in a couple of Cheetash configurations and hence is mandated to use the same name, "harp_env," while installing the application. Please delete the environment if it already exists with this name before installing the framework.
+2. Upon successful installation, the install script with retuen the below response:
+ (OSC Install Script) Generating Module File Step: /users/PAS0536/swathivm/osc_apps/lmodfiles/harp/1.0.lua
+ (OSC Install Script) Generating Module File Step Finished
+ Finished at Thu Mar 16 11:44:13 EDT 2023
+ Execution time: 1965 seconds
    
 ### Using HARP to profile an application and predict the execution time
 1. Navigate to the target application folder and copy the all the files from /Post_Execution_Scripts/basic into the the current folder. For more details about the type of application categories and profiling, please read the document or PPT <ADD LINK>. 
@@ -98,15 +109,7 @@ This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheet
 4. The results of the framework are stored in the predictions.json file under the target application folder.
 Please find the sample application under the example folder and follow the read-me file to execute the framework against profiling and estimating the resource needs
 
-NOTE
--------------
-Things to consider while installing the framework on OSC
-1. [OSC Installation] The installer creates a conda environment, "harp_env" on OSC and uses this environment to execute the framework. The environment name is used in a couple of Cheetash configurations and hence is mandated to use the same name, "harp_env," while installing the application. Please delete the environment if it already exists with this name before installing the framework.
-2. Upon successful installation, the install script with retuen the below response:
-  (OSC Install Script) Generating Module File Step: /users/PAS0536/swathivm/osc_apps/lmodfiles/harp/1.0.lua
-  (OSC Install Script) Generating Module File Step Finished
-  Finished at Thu Mar 16 11:44:13 EDT 2023
-  Execution time: 1965 seconds
+
 
 Releases
 --------
