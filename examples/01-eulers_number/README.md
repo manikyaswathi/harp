@@ -34,7 +34,7 @@ The current folder '01-eulers_number' is called target application folder.
    source activate harp_env
    ```
    - Ensure that HARP_HOME environmrnt variable is to HARP install directory and the Cheetah and HARP binaries are in path
-   ``bash
+   ```bash
    echo HARP_HOME 
    echo $PATH
    ```
