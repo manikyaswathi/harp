@@ -2,8 +2,8 @@
 
 pwdir=`pwd`
 
-#source install-script-source/install-template.sh
-source /users/PZS0645/support/share/install-script/install-template.sh
+source install-script-source/install-template.sh
+# source /users/PZS0645/support/share/install-script/install-template.sh
 
 VERIFY_FILES="
 cheetah/bin/cheetah
