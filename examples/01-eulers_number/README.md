@@ -19,7 +19,7 @@ The current folder '01-eulers_number' is called target application folder.
     ```
       class GrayScott(Campaign):
         ...
-        scheduler_options = {'owens_gpu': {'project':'<OSC-project-account>'}}
+        scheduler_options = {'owens_gpu': {'project':'<OSC-Project-Account>'}}
         ...
     ```
    - Adjust the paths for the **cheetah_app_directory** and ((cheetah_campaign_file** keys in pipeline_config.json file to pointto the current directory.
