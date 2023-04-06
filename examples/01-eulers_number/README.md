@@ -24,14 +24,20 @@ The current folder '01-eulers_number' is called target application folder.
     ```
    - Adjust the paths for the **cheetah_app_directory** and ((cheetah_campaign_file** keys in pipeline_config.json file to pointto the current directory.
     
-4. Run the following commands (either in command line more or in sbatch script) to load HARP Module and activate the environmnet (** Only for OSC **)
-  ```bash
-  module use $HOME/osc_apps/lmodfiles
-  module load harp 
-  export CONDA_HOME=<path-to-conda-install>/miniconda3
-  source $CONDA_HOME/bin/activate
-  source activate harp_env
-```
+4. Run the following commands to set/check the environment to run HARP framework
+   - To load the module and set the environment on OSC (either in command line more or in sbatch script)
+   ```bash
+   module use $HOME/osc_apps/lmodfiles
+   module load harp 
+   export CONDA_HOME=<path-to-conda-install>/miniconda3
+   source $CONDA_HOME/bin/activate
+   source activate harp_env
+   ```
+   - Ensure that HARP_HOME environmrnt variable is to HARP install directory and the Cheetah and HARP binaries are in path
+   ``bash
+   echo HARP_HOME 
+   echo $PATH
+   ```
 5. Run the following commands (either in command line more or in sbatch script) to execute the framwork from the target application folder
 ```bash
   cd <path to 01-eulers_number folder>
