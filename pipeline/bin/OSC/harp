@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
-source $CONDA_HOME/bin/activate
-source activate harp_env
+# source $CONDA_HOME/bin/activate
+# source activate harp_env
 
 export PIPELINE_HOME=$HOME/osc_apps/harp/1.0.0/pipeline
 
