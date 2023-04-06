@@ -61,9 +61,7 @@ This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheet
   source $CONDA_HOME/bin/activate
   source activate harp_env
    ```
-   
-NOTE
--------------
+**NOTE**
 Things to consider while installing the framework on OSC
 1. [OSC Installation] The installer creates a conda environment, "harp_env" on OSC and uses this environment to execute the framework. The environment name is used in a couple of Cheetash configurations and hence is mandated to use the same name, "harp_env," while installing the application. Please delete the environment if it already exists with this name before installing the framework.
 2. Upon successful installation, the install script with retuen the below response:
@@ -101,9 +99,9 @@ Things to consider while installing the framework on OSC
   export HARP_HOME=<install-dir>
   ```
  The HARP pipeline is ready to used once the binaries are set in PATH. 
+ 
+ 
 * Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
-
-
 
    
 ### Using HARP to profile an application and predict the execution time
