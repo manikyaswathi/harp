@@ -100,7 +100,7 @@ Things to consider while installing the framework on OSC
 Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
 
    
-### Using HARP to profile an application and predict the execution time
+## Using HARP to profile an application and predict the execution time
 1. Navigate to the target application folder and copy the all the files from /Post_Execution_Scripts/basic into the the current folder. For more details about the type of application categories and profiling, please read the document or PPT <ADD LINK>. 
 2. Edit path in post-script.sh to point to the target application directory
 3. Execute the framework as per the configurations in file 'train_config.json' as follows:
