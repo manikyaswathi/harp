@@ -16,19 +16,19 @@ Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like 
  
 <!--  ![HARP Pipeline](Documents/HARP_Pipeline.png) -->
 <img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/HARP_Pipeline.png" alt="HARP Pipeline" width=75% height=75% class="center">
-          Figure 1: The Proposed Framework: training data generation, building regression models & selecting the best model based on custom criteria
+          **Figure 1:** The Proposed Framework: training data generation, building regression models & selecting the best model based on custom criteria
   
   
-### Components and Characteristics of the framework (from figure 1):
+### Components and Characteristics of the Framework (from Figure 1):
 1. **Generating and Preparing Training Data:** This module automatically and systematically generates comprehensive, diverse "scaled-down(SD)" and limited, selective "full-scale(FS)" runs with minimal human intervention. We use Cheetah (https://github.com/CODARcode/cheetah) to execute the target application with the pre-defined data generation configurations (SD and FS) to generate the history-of-runs training data.
 2. **Building Regression Models:** This module standardizes and prepares the data, trains the selected off-the-shelf regression models with the appropriate hyper-parameters, and stores them for inference. In this phase, the data generated in the first phase is processed to train regression models. Redundant features are eliminated, outliers are removed, and features are transformed to reduce the dimensionality before training the regression models. 
-3. **Selecting Appropriate Prediction Model:** this module selects the most appropriate regression model from a pool of trained models from phase 2 with respect to a given policy and target application
+3. **Selecting Appropriate Prediction Model:** This module selects the most appropriate regression model from a pool of trained models from phase 2 with respect to a given policy and target application
   
   
 <!--  ![Application Folder Structure and Files](Documents/Folder_Structure.png) -->
  
 <img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/Folder_Structure.png" alt="Application Folder Structure and Files" width=75% height=75% class="center">
-              Figure 2: Shows the target-application execution endpoint and the harp application folder structure. 
+              **Figure 2:** Shows the target-application execution endpoint and the harp application folder structure. 
 
  
 ## Installation
@@ -59,14 +59,14 @@ This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheet
 
 Things to consider while installing the framework on OSC
 1. [OSC Installation] The installer creates a conda environment, "harp_env" on OSC and uses this environment to execute the framework. The environment name is used in a couple of Cheetash configurations and hence is mandated to use the same name, "harp_env," while installing the application. Please delete the environment if it already exists with this name before installing the framework.
-2. Upon successful installation, the install script with retuen the below response:
+2. Upon successful installation, the install script will return the below response:
  (OSC Install Script) Generating Module File Step: /users/PAS0536/swathivm/osc_apps/lmodfiles/harp/1.0.lua
  (OSC Install Script) Generating Module File Step Finished
  Finished at Thu Mar 16 11:44:13 EDT 2023
  Execution time: 1965 seconds
 
 ### **Follow these steps to setup the HARP framework on a standalone Linux system:**
-* Use the below commannds to install the dependencies using pip
+* Use the below commands to install the dependencies using pip
   ```bash
   pip install psutil
   pip install tensorflow
@@ -110,7 +110,7 @@ Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
   harp <pipeline-configration>.json
   ```
 4. The results of the framework are stored in the predictions.json file under the target application folder.
-Please find the sample application under the example folder and follow the read-me file to execute the framework against profiling and estimating the resource needs
+Please find the sample application under the example folder and follow the read-me file to execute the framework against profiling and estimating the resource needs.
 
 
 
