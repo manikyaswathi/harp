@@ -15,15 +15,15 @@ The current folder '01-eulers_number' is called target application folder.
 1. Navigate to the target application folder and copy the all the files from /Post_Execution_Scripts/basic into the the current folder. For more details about the type of application categories and profiling, please read the document or PPT .
 2. Edit the paths in "post_script.sh" to point to this folder (the target application folder). 
 3. Edit the follwoing files bedore profiling the application
-a. Set the OSC project account in the campaign files "*_campaign_*.py". 
-  ```
-  class GrayScott(Campaign):
-     ...
-     scheduler_options = {'owens_gpu': {'project':'<OSC-project-account>'}}
-     ...
-  ```
-b. Adjust the paths for the "cheetah_app_directory" and "cheetah_campaign_file" keys in "pipeline_config.json" file to pointto the current directory.
-3. Run the following commands (either in command line more or in sbatch script) to load HARP Module and activate the environmnet (** Only for OSC **)
+   - Set the OSC project account in the campaign files "*_campaign_*.py". 
+     ```
+      class GrayScott(Campaign):
+        ...
+        scheduler_options = {'owens_gpu': {'project':'<OSC-project-account>'}}
+        ...
+    ```
+   - Adjust the paths for the "cheetah_app_directory" and "cheetah_campaign_file" keys in "pipeline_config.json" file to pointto the current directory.
+4. Run the following commands (either in command line more or in sbatch script) to load HARP Module and activate the environmnet (** Only for OSC **)
   ```bash
   module use $HOME/osc_apps/lmodfiles
   module load harp 
@@ -31,7 +31,7 @@ b. Adjust the paths for the "cheetah_app_directory" and "cheetah_campaign_file" 
   source $CONDA_HOME/bin/activate
   source activate harp_env
 ```
-4. Run the following commands (either in command line more or in sbatch script) to execute the framwork from the target application folder
+5. Run the following commands (either in command line more or in sbatch script) to execute the framwork from the target application folder
 ```bash
   cd <path to 01-eulers_number folder>
   chmod 755 *
