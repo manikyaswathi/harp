@@ -25,7 +25,7 @@ The current folder '01-eulers_number' is called target application folder.
    - Adjust the paths for the **cheetah_app_directory** and ((cheetah_campaign_file** keys in pipeline_config.json file to pointto the current directory.
     
 4. Run the following commands to set/check the environment to run HARP framework
-   - To load the module and set the environment on OSC (either in command line more or in sbatch script)
+   - To load the module and set the environment on **OSC** (either in command line more or in sbatch script)
    ```bash
    module use $HOME/osc_apps/lmodfiles
    module load harp 
@@ -33,7 +33,7 @@ The current folder '01-eulers_number' is called target application folder.
    source $CONDA_HOME/bin/activate
    source activate harp_env
    ```
-   - Ensure that HARP_HOME environmrnt variable is to HARP install directory and the Cheetah and HARP binaries are in path
+   - For running harp on **Sanndalone Linux System** Ensure that HARP_HOME environmrnt variable is set to HARP install directory and the Cheetah and HARP binaries are in PATH
    ```bash
    echo HARP_HOME 
    echo $PATH
