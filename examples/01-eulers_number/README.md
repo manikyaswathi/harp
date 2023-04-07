@@ -14,7 +14,7 @@ The current folder '01-eulers_number' is called target application folder.
 
 1. Navigate to the target application folder and copy the all the files from /Post_Execution_Scripts/basic into the the current folder. For more details about the type of application categories and profiling, please read the document or PPT .
 2. Edit the paths in "post_script.sh" to point to this folder (the target application folder). 
-3. Edit the following files before applying the hARP framework to the application
+3. Edit the following files before applying the HARP framework to the application
    - If running the pipeline on OSC, set the OSC project account in the campaign files "*_campaign_*.py". Ignore otherwise.
     ```
       class GrayScott(Campaign):
@@ -33,14 +33,14 @@ The current folder '01-eulers_number' is called target application folder.
    source $CONDA_HOME/bin/activate
    source activate harp_env
    ```
-   - FFor running harp on **Standalone Linux System** Ensure that HARP_HOME environment variable is set to HARP install directory and the Cheetah and HARP binaries are in PATH
+   - For running harp on **Standalone Linux System** Ensure that HARP_HOME environment variable is set to the HARP install directory and the Cheetah and HARP binaries are in PATH
    ```bash
-   echo HARP_HOME 
+   echo $HARP_HOME 
    echo $PATH
    ```
 5. Run the following commands to execute the framework from the target application folder
 ```bash
-  cd <path to 01-eulers_number folder>
+  cd <path-to-01-eulers_number-folder>
   chmod 755 *
   harp pipeline_config.json
 ```

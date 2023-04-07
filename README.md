@@ -66,7 +66,7 @@ Things to consider while installing the framework on OSC
  Execution time: 1965 seconds
 
 ### **Follow these steps to setup the HARP framework on a standalone Linux system:**
-* Use the below commands to install the dependencies using pip
+* Use these commands to install the dependencies using pip
   ```bash
   pip install psutil
   pip install tensorflow
@@ -79,20 +79,20 @@ Things to consider while installing the framework on OSC
   ```
 * Install Cheetah
   ```bash
-  cd <install-dir>/harp/cheetah
+  cd <path-to-harp>/cheetah
   pip install --editable .
   ```
 * Ensure the scripts have '**execute**' privileges
   ```bash
-  cd <install-dir>/harp/pipeline/bin/local
+  cd <path-to-harp>/pipeline/bin/local
   chmod 755 harp
-  cd <install-dir>/harp/cheetah/bin
+  cd <path-to-harp>/cheetah/bin
   chmod 755 *
   ```
 * Set the HARP pipeline and Cheetah binaries in the PATH and set the install-dir in HARP_HOME
   ```bash
-  export PATH=<install-dir>/harp/pipeline/bin/local:<install-dir>/cheetah/bin:$PATH
-  export HARP_HOME=<install-dir>
+  export HARP_HOME=<path-to-harp>
+  export PATH=$HARP_HOME/pipeline/bin/local:$HARP_HOME/cheetah/bin:$PATH
   ```
  The HARP pipeline is ready to used once the HARP_HOME and binaries are set in PATH. 
  
