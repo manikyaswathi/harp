@@ -40,7 +40,8 @@ The current folder '01-eulers_number' is called target application folder.
    ```
 5. Run the following commands to execute the framework from the target application folder
 ```bash
-  cd <path-to-01-eulers_number-folder>
+  cd <path-to-01-eulers_number-
+  folder>
   chmod 755 *
   harp pipeline_config.json
 ```
