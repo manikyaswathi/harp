@@ -16,7 +16,7 @@ Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like 
  
 <!--  ![HARP Pipeline](Documents/HARP_Pipeline.png) -->
 <img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/HARP_Pipeline.png" alt="HARP Pipeline" width=75% height=75% class="center">
-          **Figure 1:** The Proposed Framework: training data generation, building regression models & selecting the best model based on custom criteria
+          Figure 1: The Proposed Framework: training data generation, building regression models & selecting the best model based on custom criteria
   
   
 ### Components and Characteristics of the Framework (from Figure 1):
@@ -28,7 +28,7 @@ Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like 
 <!--  ![Application Folder Structure and Files](Documents/Folder_Structure.png) -->
  
 <img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/Folder_Structure.png" alt="Application Folder Structure and Files" width=75% height=75% class="center">
-              **Figure 2:** Shows the target-application execution endpoint and the harp application folder structure. 
+              Figure 2: Shows the target-application execution endpoint and the harp application folder structure. 
 
  
 ## Installation
