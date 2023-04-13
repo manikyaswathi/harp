@@ -23,7 +23,7 @@ Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like 
 1. **Generating and Preparing Training Data:** This module automatically and systematically generates comprehensive, diverse "scaled-down(SD)" and limited, selective "full-scale(FS)" runs with minimal human intervention. We use Cheetah (https://github.com/CODARcode/cheetah) to execute the target application with the pre-defined data generation configurations (SD and FS) to generate the history-of-runs training data.
 2. **Building Regression Models:** This module standardizes and prepares the data, trains the selected off-the-shelf regression models with the appropriate hyper-parameters, and stores them for inference. In this phase, the data generated in the first phase is processed to train regression models. Redundant features are eliminated, outliers are removed, and features are transformed to reduce the dimensionality before training the regression models. 
 3. **Selecting Appropriate Prediction Model:** This module selects the most appropriate regression model from a pool of trained models from phase 2 with respect to a given policy and target application
-  
+Note: the framework id built on TensorFlow Framework.
   
 <!--  ![Application Folder Structure and Files](Documents/Folder_Structure.png) -->
  
@@ -73,29 +73,34 @@ Things to consider while installing the framework on OSC
   pip install pandas
   pip install scikit-learn
   ```
-* Download the source code into the <install-dir>
+* Download the source code into the <install-dir> and set it to HARP_HOME
   ```bash
   git clone https://github.com/ICICLE-ai/harp.git
+  export HARP_HOME=<path-to-harp>
   ```
 * Install Cheetah
   ```bash
-  cd <path-to-harp>/cheetah
+  cd $HARP_HOME/cheetah
   pip install --editable .
   ```
 * Ensure the scripts have '**execute**' privileges
   ```bash
-  cd <path-to-harp>/pipeline/bin/local
+  cd $HARP_HOME/pipeline/bin/local
   chmod 755 harp
-  cd <path-to-harp>/cheetah/bin
+  cd $HARP_HOME/cheetah/bin
   chmod 755 *
   ```
-* Set the HARP pipeline and Cheetah binaries in the PATH and set the install-dir in HARP_HOME
+* Set the HARP pipeline and Cheetah binaries in the PATH
   ```bash
-  export HARP_HOME=<path-to-harp>
   export PATH=$HARP_HOME/pipeline/bin/local:$HARP_HOME/cheetah/bin:$PATH
   ```
  The HARP pipeline is ready to used once the HARP_HOME and binaries are set in PATH. 
  
+**NOTE**
+
+Things to consider while installing the dependencies on stand-alone linux systems:
+1. if you do not have root or admin proviledge on the system, please consult your package manager on how to install mpich and opetr dependencies. 
+
  
 Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
 
