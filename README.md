@@ -76,7 +76,7 @@ Things to consider while installing the framework on OSC
 * Download the source code into the <install-dir> and set it to HARP_HOME
   ```bash
   git clone https://github.com/ICICLE-ai/harp.git
-  export HARP_HOME=<path-to-harp>
+  export HARP_HOME=<path-to-download-folder>/harp
   ```
 * Install Cheetah
   ```bash
