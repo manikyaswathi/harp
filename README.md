@@ -131,9 +131,12 @@ Vallabhajosyula, Manikya Swathi, and Rajiv Ramnath. "Towards Practical, Generali
 
  Vallabhajosyula, Swathi, and Rajiv Ramnath. "Establishing a Generalizable Framework for Generating Cost-Aware Training Data and Building Unique Context-Aware Walltime Prediction Regression Models." 20th IEEE International Symposium on Parallel and Distributed Processing with Applications (ISPA 2022). December 2022
 
-Reporting Bugs
---------------
+Reporting Bugs and Contribution
+--------------------------------
 Please open an issue on the [github issues](https://github.com/manikyaswathi/harp/issues) page to report a bug.
+
+HARP is an open-source repository, and we invite the community to collaborate and include their workflows into the framework to profile their applications. Create a pull request to add your changes to the dev branch.
+
 
 License
 -------
