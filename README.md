@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-# HARP - HPC Application Resource Predictor
+# HARP - HPC Application Runtime Predictor
 
 ## Overview
 
@@ -16,7 +16,7 @@ Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like 
  
 <!--  ![HARP Pipeline](Documents/HARP_Pipeline.png) -->
 <img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/HARP_Pipeline.png" alt="HARP Pipeline" width=75% height=75% class="center">
-          **Figure 1:** The Proposed Framework: training data generation, building regression models & selecting the best model based on custom criteria
+          Figure 1: The Proposed Framework: training data generation, building regression models & selecting the best model based on custom criteria
   
   
 ### Components and Characteristics of the Framework (from Figure 1):
@@ -28,7 +28,7 @@ Note: the framework id built on TensorFlow Framework.
 <!--  ![Application Folder Structure and Files](Documents/Folder_Structure.png) -->
  
 <img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/Folder_Structure.png" alt="Application Folder Structure and Files" width=75% height=75% class="center">
-              **Figure 2:** Shows the target-application execution endpoint and the harp application folder structure. 
+              Figure 2: Shows the target-application execution endpoint and the harp application folder structure. 
 
  
 ## Installation
@@ -139,9 +139,12 @@ Other papers:
  Vallabhajosyula, Manikya Swathi, and Rajiv Ramnath. "Towards Practical, Generalizable Machine-Learning Training Pipelines to build Regression Models for Predicting Application Resource Needs on HPC Systems." Practice and Experience in Advanced Research Computing. 2022. 1-5.
 
 
-Reporting Bugs
---------------
+Reporting Bugs and Contribution
+--------------------------------
 Please open an issue on the [github issues](https://github.com/manikyaswathi/harp/issues) page to report a bug.
+
+HARP is an open-source repository, and we invite the community to collaborate and include their workflows into the framework to profile their applications. Create a pull request to add your changes to the dev branch.
+
 
 License
 -------
