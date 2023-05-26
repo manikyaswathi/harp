@@ -1,9 +1,8 @@
-
 from DataPreprocessor.DataPreprocessor import DataPreprocessor
 from DataScraper.DataScraper import DataScraper
 from ModelTrainer.ModelTrainer import ModelTrainer
 from Predictor.Predictor import Predictor
-from config_tools import get_application_config, validate_config, save_application_config
+from config_tools import get_application_config, create_application_structure, validate_config, save_application_config
 
 import argparse
 import json
@@ -17,14 +16,17 @@ def parse_args():
     return args
 
 
+def launch_data_scraper(config: dict):
+    module = DataScraper(config)
+    module.execute()
+    
+    
 def launch_data_preprocessor(config: dict):
     module = DataPreprocessor(config)
     dataset = module.execute()
     return dataset
-
-def launch_data_scraper(config: dict):
-    module = DataScraper(config)
-    module.execute()
+    
+    
 
 def launch_model_trainer(config: dict):
     module = ModelTrainer(config)
@@ -43,12 +45,13 @@ def run_all(config: dict):
 def main(module: str, config: dict):
     if module is None:
         run_all(config)
+        
 
-    if module == "data_preprocessor":
-        launch_data_preprocessor(config)
-
-    elif module == "data_scraper":
+    if module == "data_scraper":
         launch_data_scraper(config)
+    
+    elif module == "data_preprocessor":
+        launch_data_preprocessor(config)
 
     elif module == "model_trainer":
         launch_model_trainer(config)
@@ -76,10 +79,11 @@ if __name__ == "__main__":
         print("ERROR: Invalid pipeline configuration")
         exit()
     
-    application_config = get_application_config(config["application"])
-
-    config["application_config"] = application_config #add application config to config
-
+    
+    # Step 1: create the folder structure
+    pipeline_config = create_application_structure(config)
+    config["pipeline_config"]=pipeline_config
+    
     main(module, config)
 
-    save_application_config(config["application_config"])
+    #save_application_config(config["application_config"])
