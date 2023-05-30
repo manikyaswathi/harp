@@ -21,6 +21,7 @@ The current folder '01-eulers_number' is called target application folder.
       "project_account": "<project-account>". 
     ```
      Ignore otherwise.
+     The accepted list of machines are "['local', 'owens', 'owens_gpu', 'pitzer', 'pitzer_gpu', 'pitzer48', 'pitzer48_gpu', 'ascend', 'ascend_gpu']"
    - Adjust the paths for the **cheetah_app_directory** and ((cheetah_campaign_file** keys in pipeline_config.json file to pointto the current directory.
     
 4. Run the following commands to set/check the environment to run HARP framework
