@@ -14,15 +14,14 @@ The current folder '01-eulers_number' is called target application folder.
 
 1. Navigate to the target application folder and copy the all the files from /Post_Execution_Scripts/basic into the the current folder. For more details about the type of application categories and profiling, please read the document or PPT .
 2. Edit the paths in "post_script.sh" to point to this folder (the target application folder). 
-3. Edit the following files before applying the HARP framework to the application
-   - If running the pipeline on OSC, set the OSC project account in the campaign files "*_campaign_*.py". Ignore otherwise.
+3. Edit the following in "pipeline_config.json" file before applying the HARP framework to the application
+   - If running the pipeline on OSC, set the OSC cluster name and project account as
+    ```bash
+      "cheetah_campaign_machine": "<machine-name>",
+      "project_account": "<project-account>". 
     ```
-      class GrayScott(Campaign):
-        ...
-        scheduler_options = {'owens_gpu': {'project':'<OSC-Project-Account>'}}
-        ...
-    ```
-   - Adjust the paths for the **cheetah_app_directory** and ((cheetah_campaign_file** keys in pipeline_config.json file to pointto the current directory.
+     Ignore otherwise.
+   - Adjust the paths for the **cheetah_app_directory** key in pipeline_config.json file to pointto the current directory.
     
 4. Run the following commands to set/check the environment to run HARP framework
    - To load the module and set the environment on **OSC** (either in the command line mode or in the sbatch script)
