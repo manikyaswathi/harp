@@ -2,15 +2,15 @@ from DataPreprocessor.DataPreprocessor import DataPreprocessor
 from DataScraper.DataScraper import DataScraper
 from ModelTrainer.ModelTrainer import ModelTrainer
 from Predictor.Predictor import Predictor
-from config_tools import get_application_config, create_application_structure, validate_config, save_application_config
+from config_tools import get_application_config, create_application_structure, validate_config, save_application_config, check_pre_generate
 
 import argparse
-import json
-import os
+import json, sys, os
+import platform
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', default=None, type=str, help="path to json config")
+    parser.add_argument('--config', default=None, type=str, help="json config file for HARP")
     parser.add_argument('--module', default=None, type=str, help="[optional] module to run")
     args = parser.parse_args()
     return args
@@ -43,10 +43,10 @@ def run_all(config: dict):
     launch_predictor(config)
 
 def main(module: str, config: dict):
+    print("\t\t\t================= Executing Module: ", module)
     if module is None:
         run_all(config)
-        
-
+    
     if module == "data_scraper":
         launch_data_scraper(config)
     
@@ -69,21 +69,26 @@ if __name__ == "__main__":
     module, config_path = args.module, args.config
     if os.path.isfile(config_path) != True:
         print(f"ERROR: invalid path to pipeline config")
+    
 
     with open(config_path, 'r') as file:
         config = json.load(file)
-
-    #validate config
-    is_valid = validate_config(config)
-    if is_valid != True: 
-        print("ERROR: Invalid pipeline configuration")
-        exit()
+     
+    if args.module =="folder_check":  
+        exit_status = check_pre_generate(config, args.config)
+        if exit_status == 0:
+            #validate config
+            is_valid = validate_config(config)
+            if is_valid != True: 
+                print("ERROR: Invalid pipeline configuration")
+                exit()
+        
+    else: 
+        # Step 1: create the folder structure
+        pipeline_config = create_application_structure(config)
+        config["pipeline_config"]=pipeline_config
+        
+        main(module, config)
     
+        #save_application_config(config["application_config"])
     
-    # Step 1: create the folder structure
-    pipeline_config = create_application_structure(config)
-    config["pipeline_config"]=pipeline_config
-    
-    main(module, config)
-
-    #save_application_config(config["application_config"])

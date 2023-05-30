@@ -24,8 +24,13 @@
         "cheetah_campaign_file": "/<download_dir>/harp/examples/01-eulers_number/cheetah_campaign_test.py"}
     }
     ],
+<<<<<<< Updated upstream
     "cheetah_campaign_machine": "owens_gpu",
     "ModelTrainer": {
         "train": true
     }
+=======
+    "cheetah_campaign_machine": "<machine-name>",
+    "project_account": "<Project_Account>"
+>>>>>>> Stashed changes
 }

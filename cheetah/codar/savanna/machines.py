@@ -127,10 +127,87 @@ class CrusherNode(MachineNode):
         self.__dict__['__info_type__'] = 'NodeConfig'
         return self.__dict__
 
+class OwensNode(MachineNode):
+    def __init__(self):
+        MachineNode.__init__(self, 28, 0)
+
+    def validate_layout(self):
+        pass
+
+    def to_json(self):
+        self.__dict__['__info_type__'] = 'NodeConfig'
+        return self.__dict__
 
 class OwensGPUNode(MachineNode):
     def __init__(self):
         MachineNode.__init__(self, 28, 1)
+
+    def validate_layout(self):
+        pass
+
+    def to_json(self):
+        self.__dict__['__info_type__'] = 'NodeConfig'
+        return self.__dict__
+
+class PitzerNode(MachineNode):
+    def __init__(self):
+        MachineNode.__init__(self, 40, 0)
+
+    def validate_layout(self):
+        pass
+
+    def to_json(self):
+        self.__dict__['__info_type__'] = 'NodeConfig'
+        return self.__dict__
+        
+class PitzerGPUNode(MachineNode):
+    def __init__(self):
+        MachineNode.__init__(self, 40, 1)
+
+    def validate_layout(self):
+        pass
+
+    def to_json(self):
+        self.__dict__['__info_type__'] = 'NodeConfig'
+        return self.__dict__
+
+class Pitzer48Node(MachineNode):
+    def __init__(self):
+        MachineNode.__init__(self, 48, 0)
+
+    def validate_layout(self):
+        pass
+
+    def to_json(self):
+        self.__dict__['__info_type__'] = 'NodeConfig'
+        return self.__dict__
+        
+class Pitzer48GPUNode(MachineNode):
+    def __init__(self):
+        MachineNode.__init__(self, 48, 1)
+
+    def validate_layout(self):
+        pass
+
+    def to_json(self):
+        self.__dict__['__info_type__'] = 'NodeConfig'
+        return self.__dict__
+
+class AscendNode(MachineNode):
+    def __init__(self):
+        MachineNode.__init__(self, 80, 0)
+
+    def validate_layout(self):
+        pass
+
+    def to_json(self):
+        self.__dict__['__info_type__'] = 'NodeConfig'
+        return self.__dict__
+
+
+class AscendGPUNode(MachineNode):
+    def __init__(self):
+        MachineNode.__init__(self, 80, 1)
 
     def validate_layout(self):
         pass
@@ -264,7 +341,7 @@ deepthought2_gpu = Machine('deepthought2_gpu', "slurm", "mpirung", DTH2GPUNode,
                            processes_per_node=20, node_exclusive=False,
                            scheduler_options=dict(project="", queue="default", custom=""))
 
-owens = Machine('owens', 'slurm', 'mpiexec', MachineNode,
+owens = Machine('owens', 'slurm', 'mpiexec', OwensNode,
                 processes_per_node=28, node_exclusive=False,
                 scheduler_options=dict(project='', queue='batch',
                                        reservation='', custom='--ntasks-per-node=28'))
@@ -273,6 +350,40 @@ owens_gpu = Machine('owens_gpu', 'slurm', 'mpiexec', OwensGPUNode,
                 processes_per_node=28, node_exclusive=False,
                 scheduler_options=dict(project='', queue='batch',
                                        reservation='', custom='--gpus-per-node=1 --ntasks-per-node=28'))
+                                       
+pitzer = Machine('owens', 'slurm', 'mpiexec', PitzerNode,
+                processes_per_node=40, node_exclusive=False,
+                scheduler_options=dict(project='', queue='batch',
+                                       reservation='', custom='--ntasks-per-node=40'))
+
+pitzer_gpu = Machine('owens_gpu', 'slurm', 'mpiexec', PitzerGPUNode,
+                processes_per_node=40, node_exclusive=False,
+                scheduler_options=dict(project='', queue='batch',
+                                       reservation='', custom='--gpus-per-node=1 --ntasks-per-node=40'))
+                                       
+                                       
+pitzer48 = Machine('owens', 'slurm', 'mpiexec', Pitzer48Node,
+                processes_per_node=48, node_exclusive=False,
+                scheduler_options=dict(project='', queue='batch',
+                                       reservation='', custom='--ntasks-per-node=48'))
+
+pitzer48_gpu = Machine('owens_gpu', 'slurm', 'mpiexec', Pitzer48GPUNode,
+                processes_per_node=48, node_exclusive=False,
+                scheduler_options=dict(project='', queue='batch',
+                                       reservation='', custom='--gpus-per-node=1 --ntasks-per-node=48'))
+
+
+
+ascend = Machine('owens', 'slurm', 'mpiexec', AscendNode,
+                processes_per_node=80, node_exclusive=False,
+                scheduler_options=dict(project='', queue='batch',
+                                       reservation='', custom='--ntasks-per-node=80'))
+
+ascend_gpu = Machine('owens_gpu', 'slurm', 'mpiexec', AscendGPUNode,
+                processes_per_node=80, node_exclusive=False,
+                scheduler_options=dict(project='', queue='batch',
+                                       reservation='', custom='--gpus-per-node=1 --ntasks-per-node=80'))
+
 
 def get_by_name(name):
     assert name == name.lower()

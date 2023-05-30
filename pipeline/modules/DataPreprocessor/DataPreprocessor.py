@@ -35,7 +35,7 @@ class DataPreprocessor(PipelineModule):
 
     def execute(self):
         #TODO get dataset list
-        if self.application_category == "basic":
+        if self.application_category == "basic" or self.application_category == "tf_dnn" or self.application_category == "test_custom":
             dataset_list = self.get_dataset_list()
             dataset = basic_app_preprocess(dataset_list)
             self.write_csv(dataset)

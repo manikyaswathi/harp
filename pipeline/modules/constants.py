@@ -17,3 +17,5 @@ DECISION_TREE_REGRESSOR_MODEL_NAME = "dtr_model_datetime.pkl"
 
 LOSS_FUNCTION = "MSE"
 SAMPLING_BIAS = "upsample"
+PROJECT_ACCOUNT=None
+

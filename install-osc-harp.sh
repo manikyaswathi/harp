@@ -1,25 +1,31 @@
-#!/bin/bash 
-
-pwdir=`pwd`
+#!/bin/bash
 
 source install-script-source/install-template.sh
-# source /users/PZS0645/support/share/install-script/install-template.sh
+
+if [ -z "$1" ]; then RUNTIME_ENV="harp_env"; else RUNTIME_ENV=$1; fi
+
+pwdir=`pwd`
 
 VERIFY_FILES="
 cheetah/bin/cheetah
 "
 
 MULTISTEPS="" 
-initialize harp 1.0.0
-
-#dependencies modname1/modversion1 modname2/modversion2
+initialize harp 1.1.0
 
 find_conda_exists(){
     which conda | grep -o /conda > /dev/null &&  echo 0 || echo 1
 }
 
 find_in_conda_env(){
-    conda env list | grep -o RUNTIME_ENV> /dev/null && echo 0 || echo 1
+    conda env list | grep -o $RUNTIME_ENV> /dev/null && echo 0 || echo 1
+}
+
+find_harp_version(){
+    module use $HOME/osc_apps/lmodfiles
+    module load harp 
+    module --redirect list | grep -o harp/1.0.0> /dev/null && echo 0 || echo 1
+    module unload harp/1.0.0
 }
 
 # [REQUIRED] if MODULE_SETTING is not only
@@ -50,8 +56,8 @@ configure_step() {
   # The `installdir` variable contains the location of the final install directory
   # A typical configure command(s) will be similar to the following:
   
-  echo "inside configure step 1"
-  echo  $installdir
+  echo "Step 1: Configuring the conda environmnet"
+  echo  "Install folder: $installdir"
   if [ ! -d "$HOME/miniconda3" ] 
   then 
     echo "conda doesnot exists"
@@ -62,39 +68,106 @@ configure_step() {
     rm -rf $installdir/Miniconda3-latest-Linux-x86_64.sh
   fi
   source $HOME/miniconda3/bin/activate
-  # source $installdir/miniconda3/bin/activate
-
-  echo "installed conda"
-  echo $(find_in_conda_env)
-  echo "result is above"
+  #source $installdir/miniconda3/bin/activate
+  
+  
+  # Changes 1 START
+  echo "Installing here: '$pwdir' with env '$RUNTIME_ENV'"
+  echo "Finding Conda env '$RUNTIME_ENV' (0-exists, 1-does not exist) : $(find_in_conda_env)"
   if [ $(find_in_conda_env) == 1 ] 
   then
-      echo "conda env doesnot exists"
-      conda create --name harp_env python=3.9
+    echo "conda env doesnot exist, we will set up an environment $RUNTIME_ENV";
+    setup_conda_env="y"
+  else
+    echo "conda env $RUNTIME_ENV exists, type 1 to use $RUNTIME_ENV or 2 to enter to exit"
+    setup_conda_env="n"
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) break;;
+            No ) echo "Exiting the setup, try re-installing with ' ./install-osc-harp.sh <new-env-name>'"; exit;;
+        esac
+    done
   fi
-  conda activate harp_env
-  echo "conda env activated"
-  echo "inside configure step 2"
-  # cd $installdir
+  
+  if [ $setup_conda_env == "n" ]
+  then
+    echo "Step2: Checking if HARP is previously Installed with dependencies"
+    if [ $(find_harp_version) == 1 ] 
+    then
+        echo "HARP was not previously installed, we will install HARP v1.1.0 with $RUNTIME_ENV environment";
+        harp_installed="n"
+    else
+        echo "Upgrading HARP to v1.1.0 with $RUNTIME_ENV environment";
+        harp_installed="y"
+    fi
+  else
+    harp_installed="n"
+  fi
+  
+  
+  
+  if [ $setup_conda_env == "y" ]
+  then
+      # COMPLETE FRESH INSTALL START
+      echo "1. Setting up conda environment..."
+      conda create --name $RUNTIME_ENV python=3.9
+      conda activate $RUNTIME_ENV
+      echo "DONE conda env is setup and activated"
+  else
+      echo "--------------------conda activate $RUNTIME_ENV"
+      conda activate $RUNTIME_ENV
+      echo "DONE conda env is activated"
+  fi
+  
+  if [ $harp_installed == "n" ]
+  then
+      
+      echo "2. Installing CODAR Cheetach "
+      cp -r $srcdir/cheetah $installdir
+      # cd $srcdir/cheetah 
+      cd $installdir/cheetah
+      pip install --editable .
+      echo "DONE cheetah is configured"
+    
+      echo "3. Installing tensorflow and other dependecies for the pipeline"
+      conda install -c anaconda tensorflow-gpu
+      conda install -c conda-forge psutil
+      conda install pandas
+      conda install scikit-learn
+      echo "DONE installing tensorflow and other dependecies for the pipeline"
+    
+      #Copy Pipeline to install directory
+      echo "4. Copying and cofiguring HARP pipeline"
+      cp -r $srcdir/pipeline $installdir/
+      mkdir $installdir/bin
+      cp $srcdir/pipeline/bin/OSC/harp $installdir/bin
+      echo "DONE Copying HARP pipeline"
+      
+      # COMPLETE FRESH INSTALL END
+      
+  else
+    if [ $harp_installed == "y" ]
+    then
+        echo "Updating files for HARP Version 1.1.0"
+        
+        echo "1. Updating CODAR Cheetach "
+        cp -r $srcdir/cheetah $installdir
+        cd $installdir/cheetah
+        pip install --editable .
+        echo "DONE cheetah is configured"
+        
+        #Copy Pipeline to install directory
+        echo "4. Copying and cofiguring HARP pipeline"
+        cp -r $srcdir/pipeline $installdir/
+        mkdir $installdir/bin
+        cp $srcdir/pipeline/bin/OSC/harp $installdir/bin
+        echo "DONE Copying HARP pipeline"
+    fi
+  fi
+  
+  # Changes 1 END
 
-  cp -r $srcdir/cheetah $installdir
-  # cd $srcdir/cheetah 
-  cd $installdir/cheetah
-  pip install --editable .
-  echo "cheetah is configured"
-
-  echo "Installing tensorflow and other dependecies for the pipeline"
-  conda install -c anaconda tensorflow-gpu
-  conda install -c conda-forge psutil
-  conda install pandas
-  conda install scikit-learn
-  echo "DONE installing tensorflow and other dependecies for the pipeline"
-
-  #Copy Pipeline to install directory
-  cp -r $srcdir/pipeline $installdir/
-  mkdir $installdir/bin
-  cp $srcdir/pipeline/bin/OSC/harp $installdir/bin
-
+ 
 
 }
 

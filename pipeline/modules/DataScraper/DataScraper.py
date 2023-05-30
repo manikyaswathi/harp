@@ -58,9 +58,7 @@ class DataScraper(PipelineModule):
 
 
     def execute(self):
-        if self.application_category == "trimmomatic":
-            print(f"Advanced DataScraper module is not required for {self.application} under {self.application_category}")
-        if self.application_category == "basic":
+        if self.application_category == "trimmomatic" or self.application_category == "basic" or self.application_category == "tf_dnn":
             print(f"Advanced DataScraper module is not required for {self.application} under {self.application_category}")
         elif self.application_category == "dnn":
             dataframe = self.scrape_dnns()

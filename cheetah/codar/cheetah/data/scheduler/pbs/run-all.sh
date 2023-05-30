@@ -19,6 +19,7 @@ for group_dir in $group_dirs; do
     if [[ $group_dir != *"_Detail"* ]]; then
         echo "Submitting $group_dir"
         cd "$group_dir" || exit_exit "Missing group dir '$group_dir', aborting"
+        scontrol show job=$SLURM_JOB_ID > ../sg_1_Details/osc_allocation_info.log
         ./submit.sh || exit_exit "Failed to submit group '$group_dir', aborting"
         cd ..
     fi
