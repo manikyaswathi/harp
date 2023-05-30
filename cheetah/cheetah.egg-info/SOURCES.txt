@@ -6,7 +6,6 @@ cheetah.egg-info/PKG-INFO
 cheetah.egg-info/SOURCES.txt
 cheetah.egg-info/dependency_links.txt
 cheetah.egg-info/top_level.txt
-codar/__init__.py
 codar/cheetah/__init__.py
 codar/cheetah/adios2_interface.py
 codar/cheetah/adios_params.py
@@ -26,10 +25,7 @@ codar/cheetah/status.py
 codar/cheetah/templates.py
 codar/cheetah/data/.DS_Store
 codar/cheetah/data/etc/tau.conf
-codar/cheetah/data/machine_config/.DS_Store
 codar/cheetah/data/machine_config/cori/submit-env.sh
-codar/cheetah/data/machine_config/owens/submit-env.sh
-codar/cheetah/data/machine_config/owens_gpu/submit-env.sh
 codar/cheetah/data/machine_config/summit/submit-env.sh
 codar/cheetah/data/machine_config/theta/submit-env.sh
 codar/cheetah/data/machine_config/titan/submit-env.sh

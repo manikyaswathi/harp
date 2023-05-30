@@ -50,11 +50,13 @@ This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheet
 #### Loading the HARP module on OSC
    ```bash
   module use $HOME/osc_apps/lmodfiles
-  module load harp 
+  module load harp/<version> 
   export CONDA_HOME=<path_to_miniconda>/miniconda3
   source $CONDA_HOME/bin/activate
   source activate harp_env
    ```
+ The available versions are 1.0.0 and 1.1.0
+
 **NOTE**
 
 Things to consider while installing the framework on OSC
