@@ -56,6 +56,7 @@ This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheet
   source activate harp_env
    ```
  The available versions are 1.0.0 and 1.1.0
+
 **NOTE**
 
 Things to consider while installing the framework on OSC
