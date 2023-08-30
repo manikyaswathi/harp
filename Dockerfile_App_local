@@ -3,6 +3,7 @@ FROM swathimanikya/harp-framework:0.0.1
 # Do application specific installations
 #  "3. Application Setup"
 ADD examples /app/examples
+# Replace examples with your application folder
 
 
 #copy the exection end-point file
