@@ -1,0 +1,11 @@
+FROM swathimanikya/harp-framework:0.0.1
+
+# Do application specific installations
+#  "3. Application Setup"
+ADD examples /app/examples
+
+
+#copy the exection end-point file
+COPY ProfileApplication.sh /app/ProfileApplication.sh
+#execute HARP to profile target application ion "examples"
+ENTRYPOINT ["sh", "/app/ProfileApplication.sh"]

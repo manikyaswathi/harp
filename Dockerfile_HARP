@@ -1,0 +1,21 @@
+FROM python:3.10
+
+
+RUN echo "1. Installing HARP Pipeline Dependencies"
+RUN pip3 install psutil
+RUN pip3 install pandas
+RUN pip3 install scikit-learn
+RUN apt-get update 
+RUN apt-get install -y jq
+RUN pip3 install tensorflow
+RUN echo "1.0. DONE HARP Pipeline Dependency configurations"
+
+RUN echo "2. Installing HARP"
+RUN echo "2.0 Copying HARP"
+ADD HARP /app/HARP
+RUN echo "2.1 Installing Cheetah"
+RUN pip3 install --editable /app/HARP/cheetah/.
+RUN echo "2.2 DONE cheetah is configured"
+
+ENV HARP_HOME="/app/HARP"
+ENV PATH=$PATH:"$HARP_HOME/pipeline/bin/local/"
