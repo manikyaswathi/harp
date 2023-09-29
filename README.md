@@ -226,7 +226,7 @@ Stampede2 (TACC) |  | :white_check_mark: | :white_check_mark: | :white_check_mar
 
 Citing HARP
 --------------
-Please cite the following paper if using HARP:
+Please cite the following paper if using HARP: <br />
  S. Vallabhajosyula and R. Ramnath, "Establishing a Generalizable Framework for Generating Cost-Aware Training Data and Building Unique Context-Aware Walltime Prediction Regression Models," 2022 IEEE Intl Conf on Parallel & Distributed Processing with Applications, Big Data & Cloud Computing, Sustainable Computing & Communications, Social Computing & Networking (ISPA/BDCloud/SocialCom/SustainCom), Melbourne, Australia, 2022, pp. 497-506, doi: 10.1109/ISPA-BDCloud-SocialCom-SustainCom57177.2022.00070.
 
 Other papers:
