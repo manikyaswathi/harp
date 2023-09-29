@@ -217,7 +217,7 @@ The current release is [2.0.0](https://github.com/ICICLE-ai/harp).
 
 ### Supported Systems
 System Name | Version V1 Support | Version V2 Support | CPU | GPU 
-:-----------| :---------------| :---------------| :---------------
+:-----------| :---------------| :---------------| :---------------| :---------------
 Local Linux machines | :white_check_mark: | :white_check_mark: | :white_check_mark: 
 Owens (OSC) | :white_check_mark: | :white_check_mark: |  :white_check_mark: | :white_check_mark: 
 Pitzer (OSC) | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: 
