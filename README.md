@@ -1,35 +1,240 @@
-HARP Description
 
-Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like the Ohio Supercomputer (OSC) or Texas Advanced Computing Center (TACC) to execute computationally intensive diverse scientific workflows. Some workflows are heavy on IO, like genome sequencing (cleaning and assembly), while others, like training DNNs, could be compute (and memory) intensive. Each workflow has a unique resource requirement, and it is essential to profile and understand these needs to allocate shared resources for optimal utilization of the cyberinfrastructure. These resources are expensive, and several jobs compete to get these allocations, sometimes with reasonable wait times (while requesting enormous resources for a long time). Estimating the expected resources for optimally utilizing the compute and memory is challenging, especially considering the need for sufficient history to enable these predictions tailored for unique workflows and execution environments. We explored and established a framework (as shown in Figure 1) that pipelines the solutions to address these challenges. The framework is configured to generate a history of executions and train suitable regression models to estimate the approximate execution time for a targeted application.
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-How to Build HARP Pipeline Image
-Please run the following commands to build the HARP Framework Image and store it in Dockerhub.
+# HARP - HPC Application Runtime Predictor
 
-docker build -f Dockerfile_HARP_framework -t harp-framework:0.0.1 .
-docker push <docker-namesapce>/harp-framework:0.0.1
+## Overview
 
-Note: 
-1. You should have a DockerHub Account and store the Image with public access. 
-2. Docker Demaon and a client (or a Docker Desktop that bundles both the daemon and client) 
+Researchers use high-performance computing (HPC) cyberinfrastructures (CI) like Ohio Supercomputer (OSC) or Texas Advanced Computing Center (TACC) to execute computationally intensive diverse scientific workflows. Some workflows are heavy on IO, like genome sequencing (cleaning and assembly), while others, like training DNNs, could be compute (and memory) intensive. Each workflow has a unique resource requirement, and it is essential to profile and understand these needs to allocate shared resources for optimal utilization of the cyberinfrastructure. These resources are expensive, and several jobs compete to get these allocations, sometimes with reasonable wait times (while requesting enormous resources for a long time). Estimating the expected resources for optimally utilizing the compute and memory is challenging especially considering the need for sufficient history to enable these predictions tailored for unique workflows and execution environments. We explored and established a framework (as shown in Figure 1) that pipelines the solutions to address these challenges. The framework is configured to generate a history of executions and train suitable regression models to estimate the approximate execution time for a targeted application.
 
 
-How to execute the HARP framework to profile an application:
-HARP could be executed with or without the TAPIS framework. 
-Executing HARP without TAPIS:
-1. The HARP framework could be executed locally to profile an application and estimate resource requirements for different configurations. 
+<!-- 
+![alt text](https://github.com/manikyaswathi/harp/tree/main/Documents/HARP_Pipeline.png?raw=true)
 
+![alt text](https://github.com/manikyaswathi/harp/tree/main/Documents/Folder_Structure.png?raw=true)
 
-Use Case 1:
-Executing HARP Framework locally with all components for profiling an application.
-1. Build HARP Pipeline using commands in 'How to Build HARP Pipeline Image' or use the existing from 'ghcr.io/icicle-ai/harp-framework:0.0.1'.
-2. Build an Image for the target application to profile by following the below instructions
-a. Create a docker file for the target application from the Parent HARP Image of step 1.
-FROM ghcr.io/icicle-ai/harp-framework:0.0.1
-b. Copy the folder of the application to be profiled into the app folder. 
-ADD examples /app/examples
-c. Copy the "ProfileApplication.sh" of the profiler into the Image and set that as the entry point:
-COPY ProfileApplication.sh /app/ProfileApplication.sh
-ENTRYPOINT ["sh," "/app/ProfileApplication.sh"]
-
-The "ProfileApplication.sh" files configure the HARP pipeline with writable folders to generate emulations and create and store models. 
+ -->
  
+<!--  ![HARP Pipeline](Documents/HARP_Pipeline.png) -->
+<img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/HARP_Pipeline.png" alt="HARP Pipeline" width=75% height=75% class="center">
+          Figure 1: The Proposed Framework: training data generation, building regression models & selecting the best model based on custom criteria
+  
+  
+### Components and Characteristics of the Framework (from Figure 1):
+1. **Generating and Preparing Training Data:** This module automatically and systematically generates comprehensive, diverse "scaled-down(SD)" and limited, selective "full-scale(FS)" runs with minimal human intervention. We use Cheetah (https://github.com/CODARcode/cheetah) to execute the target application with the pre-defined data generation configurations (SD and FS) to generate the history-of-runs training data.
+2. **Building Regression Models:** This module standardizes and prepares the data, trains the selected off-the-shelf regression models with the appropriate hyper-parameters, and stores them for inference. In this phase, the data generated in the first phase is processed to train regression models. Redundant features are eliminated, outliers are removed, and features are transformed to reduce the dimensionality before training the regression models. 
+3. **Selecting Appropriate Prediction Model:** This module selects the most appropriate regression model from a pool of trained models from phase 2 with respect to a given policy and target application
+Note: the framework id built on TensorFlow Framework.
+  
+<!--  ![Application Folder Structure and Files](Documents/Folder_Structure.png) -->
+ 
+<img src="https://github.com/ICICLE-ai/harp/blob/main/Documents/Folder_Structure.png" alt="Application Folder Structure and Files" width=75% height=75% class="center">
+              Figure 2: Shows the target-application execution endpoint and the harp application folder structure. 
+
+ 
+## Ways to confirgure HARP to setup applications for profiling:
+1. Install HARP as a loadable module on OSC or localbox.
+2. Configure HARP with TAPIS to configure HARP and applications to profile as contanier images. 
+
+## 1. Installation based HARP setup
+* Dependency: Linux, Python 3.9+, git, pip, mpich, psutil, jq(command line JSOM parser https://stedolan.github.io/jq/)
+* On supercomputers (OSC), it should be installed at a location accessible from the parallel file system
+### **Follow these steps to set up Harp as a loadable software module on Ohio Supercomputer (OSC):**
+  ```bash
+  git clone https://github.com/ICICLE-ai/harp.git
+  cd harp
+  chmod 755 install-osc-harp.sh
+  ./install-osc-harp.sh
+  ```
+  If the installation fails, please re-run the script 'install-osc-harp.sh' after deleting the environment 'harp-env' and running the cleanup.sh in the install directory. 
+  ```bash
+  conda remove --name harp-env --all
+  ./cleanup.sh
+  ```
+This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas, and scikit-learn and configures the Harp framework. Follow the installation prompts to proceed with the setup. This installation takes about 30-40 mins to finish the setup on Owens login-node.
+#### Loading the HARP module on OSC
+   ```bash
+  module use $HOME/osc_apps/lmodfiles
+  module load harp 
+  export CONDA_HOME=<path_to_miniconda>/miniconda3
+  source $CONDA_HOME/bin/activate
+  source activate harp_env
+   ```
+**NOTE**
+
+Things to consider while installing the framework on OSC
+1. [OSC Installation] The installer creates a conda environment, "harp_env" on OSC and uses this environment to execute the framework. The environment name is used in a couple of Cheetash configurations and hence is mandated to use the same name, "harp_env," while installing the application. Please delete the environment if it already exists with this name before installing the framework.
+2. Upon successful installation, the install script will return the below response:
+ (OSC Install Script) Generating Module File Step: /users/PAS0536/swathivm/osc_apps/lmodfiles/harp/1.0.lua
+ (OSC Install Script) Generating Module File Step Finished
+ Finished at Thu Mar 16 11:44:13 EDT 2023
+ Execution time: 1965 seconds
+
+### **Follow these steps to setup the HARP framework on a standalone Linux system:**
+* Use these commands to install the dependencies using pip
+  ```bash
+  pip install psutil
+  pip install tensorflow
+  pip install pandas
+  pip install scikit-learn
+  ```
+* Download the source code into the <install-dir> and set it to HARP_HOME
+  ```bash
+  git clone https://github.com/ICICLE-ai/harp.git
+  export HARP_HOME=<path-to-download-folder>/harp
+  ```
+* Install Cheetah
+  ```bash
+  cd $HARP_HOME/cheetah
+  pip install --editable .
+  ```
+* Ensure the scripts have '**execute**' privileges
+  ```bash
+  cd $HARP_HOME/pipeline/bin/local
+  chmod 755 harp
+  cd $HARP_HOME/cheetah/bin
+  chmod 755 *
+  ```
+* Set the HARP pipeline and Cheetah binaries in the PATH
+  ```bash
+  export PATH=$HARP_HOME/pipeline/bin/local:$HARP_HOME/cheetah/bin:$PATH
+  ```
+ The HARP pipeline is ready to used once the HARP_HOME and binaries are set in PATH. 
+ 
+**NOTE**
+
+Things to consider while installing the dependencies on stand-alone linux systems:
+1. if you do not have root or admin proviledge on the system, please consult your package manager on how to install mpich and opetr dependencies. 
+
+Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
+
+## 2. Configure HARP with TAPIS to configure HARP and applications to profile as contanier images. 
+
+Steps <Image>
+Step 1. Creating a new HARP Image [or] using the pre-made HARP Image
+Step 2. Create an image for the application to be profiled using HARP Framework (Image)
+Step 3. Execute the Application Image from TAPIS. Follow the Tapis Notebook example to configure an application with TAPIS. 
+1. Creating a HARP Image using Docker Environment
+a. Use the 'Dockerfile_HARP_local' file to create an Image for executing the Framework on a local box using 'docker build'. 
+```
+docker build -f DockerFiles/Dockerfile_HARP_local -t harp-framework-local:2.0.0 .
+
+```
+b. Use the Dockerfile_HARP_CI file to create an Image for executing the Framework on CI (like TACC or OSC) using 'docker build'. 
+
+```
+docker build -f DockerFiles/Dockerfile_HARP_CI -t harp-framework-ci:2.0.0 .
+```
+
+c. Push the Image to the docker hub or upload it to any web-accessible location. 
+```
+docker push <DockerHub>/harp-framework-[local|ci]:2.0.0
+```
+
+[or]
+
+Use an existing copy of the HARP image from our repository 
+a.. Use the harp-framework-local:2.0.0  file for executing the Framework on a local box. 
+b. Use the harp-framework-ci:2.0.0  file for executing the Framework on TACC or OSC Systems. 
+
+Note: Execute the 'docker build' command from the main folder 'harp'.
+
+2. Create an image for the application to be profiled using HARP Framework (Image)
+Using the Image created in "Step 1" or the respective Image from the ICICLE repository, create an Image for the application to be profiled using the HARP Framework. We refer to the application to be profiled as a 'target application'. 
+
+Steps for creating a DockeFile for the target application and building an application image using the 'Dockerfile_App_Template' template. 
+
+a. Edit the 'ProfileApplication.sh' entry point file to execute harp with the pipeline configurations JSON. Replace "pipeline_config.json" with your desired pipeline configuration file in the application work folder.
+```
+harp pipeline_config.json
+```
+
+b. Craete a DockerFile for the target application from the following template
+```
+FROM <web-accessible-path-to-image-hub>/harp-framework-[local|ci]:2.0.0
+
+# 1. Add application required installations.
+
+
+# 2. Target application setup 
+# Set the APP_PATH to the location with your application work folder (target application to be profiled) and APP_NAME to the work folder name
+ENV APP_PATH="<path-to-target-application>/<target-application-work-folder>"
+ENV APP_NAME="<target-application-work-folder>"
+
+# Add the target application work folder to the Image
+ADD $APP_PATH /app/$APP_PATH
+
+# 3. Copy the execution end-point file and set it
+COPY DockerFiles/ProfileApplication.sh /app/ProfileApplication.sh
+
+ENTRYPOINT ["sh", "/app/ProfileApplication.sh"]
+```
+
+c. Build the application Image (these commands show building an image for an example application 'Euler Number')
+a. Use the 'Dockerfile_App_EulerNumber' file to create an Image for executing the Framework on a local box using 'docker build'. 
+```
+docker build -f DockerFiles/Dockerfile_App_EulerNumber -t harp-app-eulernumber-[local|ci]:2.0.0 .
+```
+b. Push the Image to the docker hub or upload it to any web-accessible location. 
+```
+docker push <DockerHub>/harp-app-eulernumber-[local|ci]:2.0.0 
+```
+
+[or]
+
+Use an existing copy of the Euler Number application image from our repository. 
+
+
+ Harp has been tested on Pitzer (OSC) and stampede2 (TACC) using TAPIS framework
+
+
+   
+## Using HARP to profile an application and predict the execution time
+1. Navigate to the target application folder and copy the all the files from /Post_Execution_Scripts/basic into the the current folder. For more details about the type of application categories and profiling, please read the document or PPT <ADD LINK>. 
+2. Edit path in post-script.sh to point to the target application directory
+3. Execute the framework as per the configurations in file 'train_config.json' as follows:
+ ```bash
+  cd <path_to_application>
+  chmod 755 *
+  harp <pipeline-configration>.json
+  ```
+4. The results of the framework are stored in the predictions.json file under the target application folder.
+Please find the sample application under the example folder and follow the read-me file to execute the framework against profiling and estimating the resource needs.
+
+
+
+Releases
+--------
+The current release is [1.0.0](https://github.com/ICICLE-ai/harp).
+
+### Supported Systems
+System Name | Cheetah Support | CPU | GPU 
+:-----------| :---------------| :---------------| :---------------
+Local Linux machines | :white_check_mark: | :white_check_mark: 
+Owens (OSC) | :white_check_mark: | :white_check_mark: | :white_check_mark: 
+Pitzer (OSC) | :white_check_mark: | :white_check_mark: | :white_check_mark: 
+
+Citing HARP
+--------------
+Please cite the following paper if using HARP:
+ S. Vallabhajosyula and R. Ramnath, "Establishing a Generalizable Framework for Generating Cost-Aware Training Data and Building Unique Context-Aware Walltime Prediction Regression Models," 2022 IEEE Intl Conf on Parallel & Distributed Processing with Applications, Big Data & Cloud Computing, Sustainable Computing & Communications, Social Computing & Networking (ISPA/BDCloud/SocialCom/SustainCom), Melbourne, Australia, 2022, pp. 497-506, doi: 10.1109/ISPA-BDCloud-SocialCom-SustainCom57177.2022.00070.
+
+Other papers:
+ Vallabhajosyula, Manikya Swathi, and Rajiv Ramnath. "Towards Practical, Generalizable Machine-Learning Training Pipelines to build Regression Models for Predicting Application Resource Needs on HPC Systems." Practice and Experience in Advanced Research Computing. 2022. 1-5.
+
+
+Reporting Bugs and Contribution
+--------------------------------
+Please open an issue on the [github issues](https://github.com/manikyaswathi/harp/issues) page to report a bug.
+
+HARP is an open-source repository, and we invite the community to collaborate and include their workflows into the framework to profile their applications. Create a pull request to add your changes to the dev branch.
+
+
+License
+-------
+The HARP is licensed under the https://opensource.org/licenses/BSD-3-Clause
+
+ 
+ # Acknowledgements
+
+*This work has been funded by grants from the National Science Foundation, including the ICICLE AI Institute (OAC 2112606) and EAGER (OAC 1945347)*
