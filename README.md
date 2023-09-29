@@ -110,14 +110,11 @@ Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
 
 ## 2. Configure HARP with TAPIS to configure HARP and applications to profile as container images. 
 
-Steps:
-
-Step 1. Creating a new HARP Image [or] using the pre-made HARP Image
-
-Step 2. Create an image for the application to be profiled using HARP Framework (Image)
-
+Steps:<br />
+Step 1. Creating a new HARP Image [or] using the pre-made HARP Image <br />
+Step 2. Create an image for the application to be profiled using HARP Framework (Image) <br />
 Step 3. Execute the Application Image from TAPIS. Follow the Tapis Notebook example to configure an application with TAPIS. 
-1. Creating a HARP Image using Docker Environment
+1. Creating a HARP Image using Docker Environment <br />
 a. Use the 'Dockerfile_HARP_local' file to create an Image for executing the Framework on a local box using 'docker build'. 
 ```
 docker build -f DockerFiles/Dockerfile_HARP_local -t harp-framework-local:2.0.0 .
@@ -137,7 +134,7 @@ docker push <DockerHub>/harp-framework-[local|ci]:2.0.0
 [or]
 
 Use an existing copy of the HARP image from our repository 
-a.. Use the harp-framework-local:2.0.0  file for executing the Framework on a local box. 
+a. Use the harp-framework-local:2.0.0  file for executing the Framework on a local box. 
 b. Use the harp-framework-ci:2.0.0  file for executing the Framework on TACC or OSC Systems. 
 
 Note: Execute the 'docker build' command from the main folder 'harp'.
