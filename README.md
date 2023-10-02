@@ -37,9 +37,9 @@ Note: The Framework is built on TensorFlow Framework.
 2. Configure HARP with TAPIS to configure HARP and applications to profile as container images. 
 
 ## 1. Installation-based HARP setup
-* Dependency: Linux, Python 3.9+, git, pip, mpich, psutil, jq(command line JSOM parser https://stedolan.github.io/jq/)
+* Dependency: Linux, Python 3.9+, git, pip, mpich, psutil, jq(command line JSON parser https://stedolan.github.io/jq/)
 * On supercomputers (OSC), it should be installed at a location accessible from the parallel file system
-### **Follow these steps to set up HARP as a loadable software module on Ohio Supercomputer (OSC):**
+### **Follow these steps to set up HARP as a loadable software module on the Ohio Supercomputer (OSC):**
   ```bash
   git clone https://github.com/ICICLE-ai/harp.git
   cd harp
@@ -51,7 +51,7 @@ Note: The Framework is built on TensorFlow Framework.
   conda remove --name harp-env --all
   ./cleanup.sh
   ```
-This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas, and scikit-learn and configures the Harp framework. Follow the installation prompts to proceed with the setup. This installation takes 30-40 mins to finish the setup on Owens login-node.
+This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas, and scikit-learn and configures the Harp framework. Please follow the installation prompts to go ahead with the setup. This installation takes 30-40 mins to finish the setup on Owens login node.
 #### Loading the HARP module on OSC
    ```bash
   module use $HOME/osc_apps/lmodfiles
