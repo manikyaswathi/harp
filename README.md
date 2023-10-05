@@ -41,6 +41,7 @@ Note: The Framework is built on TensorFlow Framework.
 Steps:<br />
 Step 1. Creating a new HARP Image [or] using the pre-made HARP Image <br />
 Step 2. Create an image for the application to be profiled using HARP Framework (Image) <br />
+Step 3. Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like oSC or TACC nodes) with or without TAPIS.
 
 1. Creating a HARP Image using Docker Environment <br />
 a. Use the 'Dockerfile_HARP_local' file to create an Image for executing the Framework on a local box using 'docker build'. 
@@ -194,6 +195,7 @@ Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
 
 a. To profile the application, execute the application image built from HARP parent image using the following commands on localbox:
 ```
+[optional] docker pull ghcr.io/icicle-ai/harp-app-eulernumber-local:2.0.0
 docker run --mount source=HARP_Store,target=/scratch ghcr.io/icicle-ai/harp-app-eulernumber-local:2.0.0
 ```
 b. To profile the application using HARP on OSC or TACC <br />
@@ -202,11 +204,13 @@ i. Without TAPIS: Login into a compute node on OSC or TACC and run the following
 #### for OSC Nodes
 ```
 module load singularity
+[optional] singularity pull docker://ghcr.io/icicle-ai/harp-app-eulernumber-ci:2.0.0
 singularity run docker://ghcr.io/icicle-ai/harp-app-eulernumber-ci:2.0.0 osc /fs/scratch/PAS2271/swathivm/
 ```
 #### For TACC Nodes (Stampede2)
 ```
 module load tacc-apptainer
+[optional] singularity pull docker://ghcr.io/icicle-ai/harp-app-eulernumber-ci:2.0.0
 singularity run docker://ghcr.io/icicle-ai/harp-app-eulernumber-ci:2.0.0 tacc none
 ```
 
