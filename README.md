@@ -41,7 +41,7 @@ Note: The Framework is built on TensorFlow Framework.
 Steps:<br />
 Step 1. Creating a new HARP Image [or] using the pre-made HARP Image <br />
 Step 2. Create an image for the application to be profiled using HARP Framework (Image) <br />
-Step 3. Execute the Application Image from TAPIS. Follow the Tapis Notebook example to configure an application with TAPIS. 
+
 1. Creating a HARP Image using Docker Environment <br />
 a. Use the 'Dockerfile_HARP_local' file to create an Image for executing the Framework on a local box using 'docker build'. 
 ```
@@ -115,7 +115,7 @@ Use an existing copy of the Euler Number application image from our repository.
 
 Using the TAPIS framework, Harp has been tested on Pitzer (OSC) and stampede2 (TACC).
 
-## 1. Installation-based HARP setup
+## 2. Installation-based HARP setup
 * Dependency: Linux, Python 3.9+, git, pip, mpich, psutil, jq(command line JSON parser https://stedolan.github.io/jq/)
 * On supercomputers (OSC), it should be installed at a location accessible from the parallel file system
 ### **Follow these steps to set up HARP as a loadable software module on the Ohio Supercomputer (OSC):**
@@ -192,12 +192,22 @@ Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
 ## Using HARP to profile an application and predict the execution time
 ### Using the HARP (version 2.0.0) to profile an application (e.g. Euler Number) on local box and CIs (OSC and TACC) using TAPIS
 
-a. To execute the application docker to profile it using HARP, run the following commands:
+a. To profile the application, execute the application image built from HARP parent image using the following commands on localbox:
 ```
-docker run --mount source=HARP_Store201,target=/scratch ghcr.io/icicle-ai/harp-app-eulernumber-local:2.0.0
+docker run --mount source=HARP_Store,target=/scratch ghcr.io/icicle-ai/harp-app-eulernumber-local:2.0.0
 ```
-b. To profile the application using HARP on OSC or TACC using TAPIS:
-Follow the instructions on '' notebook to register OSC and TACC systems on TAPIS and profile the application 'harp-app-eulernumber-ci:2.0.0' 
+b. To profile the application using HARP on OSC or TACC </ br>
+i. Without TAPIS: Login into a compute node on OSC or TACC and run the following:
+```
+# for OSC Nodes
+module load singularity
+singularity run docker://ghcr.io/icicle-ai/harp-app-eulernumber-ci:2.0.0 osc /fs/scratch/PAS2271/swathivm/
+# For TACC Nodes (Stampede2)
+module load tacc-apptainer
+singularity run docker://ghcr.io/icicle-ai/harp-app-eulernumber-ci:2.0.0 tacc none
+```
+ii. Without TAPIS: Login into a compute node on OSC or TACC and run the following:
+Follow the instructions on 'Executing_HARP_using_TAPIS.ipynb' notebook in 'Notebooks'folder to register OSC and TACC systems on TAPIS and profile the application 'harp-app-eulernumber-ci:2.0.0' using HARP
 
 
 ### Using the HARP (version 1.0.0) module load OSC of HARP binary on the local box
