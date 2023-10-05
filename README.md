@@ -73,7 +73,7 @@ Using the Image created in "Step 1" or the respective Image from the ICICLE repo
 
 Steps for creating a DockeFile for the target application and building an image using the 'Dockerfile_App_Template' template. 
 
-a. Edit the 'ProfileApplication.sh' entry point file to execute harp with the pipeline configurations JSON. Replace "pipeline_config.json" with your desired pipeline configuration file in the application work folder.
+a. Edit the 'ProfileApplication.sh' entry point file to execute the HARP with the pipeline configurations JSON. Replace "pipeline_config.json" with your desired pipeline configuration file in the application work folder.
 ```
 harp pipeline_config.json
 ```
@@ -179,7 +179,7 @@ Things to consider while installing the Framework on OSC
   ```bash
   export PATH=$HARP_HOME/pipeline/bin/local:$HARP_HOME/cheetah/bin:$PATH
   ```
- The HARP pipeline is ready to used once the HARP_HOME and binaries are set in PATH. 
+ The HARP pipeline is ready to be used once the HARP_HOME and binaries are set in PATH. 
  
 **NOTE**
 
@@ -191,9 +191,9 @@ Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
 
    
 ## Using HARP to profile an application and predict the execution time
-### Using the HARP (version 2.0.0) to profile an application (e.g. Euler Number) on local box and CIs (OSC and TACC) using TAPIS
+### Using the HARP (version 2.0.0) to profile an application (e.g., Euler Number) on local box and CIs (OSC and TACC) using TAPIS
 
-a. To profile the application, execute the application image built from HARP parent image using the following commands on localbox:
+a. To profile the application, execute the application image built from the HARP parent image using the following commands on the localbox:
 ```
 [optional] docker pull ghcr.io/icicle-ai/harp-app-eulernumber-local:2.0.0
 docker run --mount source=HARP_Store,target=/scratch ghcr.io/icicle-ai/harp-app-eulernumber-local:2.0.0
@@ -214,10 +214,10 @@ module load tacc-apptainer
 singularity run docker://ghcr.io/icicle-ai/harp-app-eulernumber-ci:2.0.0 tacc none
 ```
 
-ii. With TAPIS: Follow the instructions on '**Executing_HARP_using_TAPIS.ipynb**' notebook in 'Notebooks' folder to register OSC and TACC systems on TAPIS and profile the application 'harp-app-eulernumber-ci:2.0.0' using HARP
+ii. With TAPIS: Follow the instructions in the '**Executing_HARP_using_TAPIS.ipynb**' notebook in the 'Notebooks' folder to register OSC and TACC systems on TAPIS and profile the application 'harp-app-eulernumber-ci:2.0.0' using HARP
 
 
-### Using the HARP (version 1.0.0) module load OSC of HARP binary on the local box
+### Using the HARP (version 1.0.0) module, load the OSC of the HARP binary on the local box
 1. Navigate to the target application folder and copy all the files from /Post_Execution_Scripts/basic into the current folder. 
 2. Edit path in post-script.sh to point to the target application directory
 3. Execute the Framework as per the configurations in file 'train_config.json' as follows:
