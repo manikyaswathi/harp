@@ -114,7 +114,9 @@ docker push <DockerHub>/harp-app-eulernumber-[local|ci]:2.0.0
 Use an existing copy of the Euler Number application image from our repository. 
 
 
-Using the TAPIS framework, Harp has been tested on Pitzer (OSC) and stampede2 (TACC).
+**NOTE**
+**Using the TAPIS framework, Harp has been tested on Pitzer (OSC) and stampede2 (TACC).**
+
 
 ## 2. Installation-based HARP setup
 * Dependency: Linux, Python 3.9+, git, pip, mpich, psutil, jq(command line JSON parser https://stedolan.github.io/jq/)
@@ -182,11 +184,10 @@ Things to consider while installing the Framework on OSC
  The HARP pipeline is ready to be used once the HARP_HOME and binaries are set in PATH. 
  
 **NOTE**
+**HARP has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.**
 
 Things to consider while installing the dependencies on standalone Linux systems:
 1. if you do not have root or admin privileges, please consult your package manager on installing mpich and operator dependencies. 
-
-Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
 
 
    
