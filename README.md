@@ -33,82 +33,10 @@ Note: The Framework is built on TensorFlow Framework.
 
  
 ## Ways to configure HARP to setup applications for profiling:
-1. Install HARP as a loadable module on OSC or localbox.
-2. Configure HARP with TAPIS to configure HARP and applications to profile as container images. 
+1. Configure HARP with TAPIS to execute HARP and applications to profile as container images. 
+2. Install HARP as a loadable module on OSC or localbox.
 
-## 1. Installation-based HARP setup
-* Dependency: Linux, Python 3.9+, git, pip, mpich, psutil, jq(command line JSON parser https://stedolan.github.io/jq/)
-* On supercomputers (OSC), it should be installed at a location accessible from the parallel file system
-### **Follow these steps to set up HARP as a loadable software module on the Ohio Supercomputer (OSC):**
-  ```bash
-  git clone https://github.com/ICICLE-ai/harp.git
-  cd harp
-  chmod 755 install-osc-harp.sh
-  ./install-osc-harp.sh
-  ```
-  If the installation fails, please re-run the script 'install-osc-harp.sh' after deleting the environment 'harp-env' and running the cleanup.sh in the install directory. 
-  ```bash
-  conda remove --name harp-env --all
-  ./cleanup.sh
-  ```
-This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas, and scikit-learn and configures the Harp framework. Please follow the installation prompts to go ahead with the setup. This installation takes 30-40 mins to finish the setup on Owens login node.
-#### Loading the HARP module on OSC
-   ```bash
-  module use $HOME/osc_apps/lmodfiles
-  module load harp 
-  export CONDA_HOME=<path_to_miniconda>/miniconda3
-  source $CONDA_HOME/bin/activate
-  source activate harp_env
-   ```
-**NOTE**
-
-Things to consider while installing the Framework on OSC
-1. [OSC Installation] The installer creates a conda environment, "harp_env" on OSC and uses this environment to execute the Framework. The environment name is used in a couple of Cheetash configurations and hence is mandated to use the same name, "harp_env," while installing the application. Please delete the environment if it already exists with this name before installing the Framework.
-2. Upon successful installation, the install script will return the below response:
- (OSC Install Script) Generating Module File Step: /users/PAS0536/swathivm/osc_apps/lmodfiles/harp/1.0.lua
- (OSC Install Script) Generating Module File Step Finished
- Finished at Thu Mar 16 11:44:13 EDT 2023
- Execution time: 1965 seconds
-
-### **Follow these steps to set the HARP framework on a standalone Linux system:**
-* Use these commands to install the dependencies using pip
-  ```bash
-  pip install psutil
-  pip install tensorflow
-  pip install pandas
-  pip install scikit-learn
-  ```
-* Download the source code into the <install-dir> and set it to HARP_HOME
-  ```bash
-  git clone https://github.com/ICICLE-ai/harp.git
-  export HARP_HOME=<path-to-download-folder>/harp
-  ```
-* Install Cheetah
-  ```bash
-  cd $HARP_HOME/cheetah
-  pip install --editable .
-  ```
-* Ensure the scripts have '**execute**' privileges
-  ```bash
-  cd $HARP_HOME/pipeline/bin/local
-  chmod 755 harp
-  cd $HARP_HOME/cheetah/bin
-  chmod 755 *
-  ```
-* Set the HARP pipeline and Cheetah binaries in the PATH
-  ```bash
-  export PATH=$HARP_HOME/pipeline/bin/local:$HARP_HOME/cheetah/bin:$PATH
-  ```
- The HARP pipeline is ready to used once the HARP_HOME and binaries are set in PATH. 
- 
-**NOTE**
-
-Things to consider while installing the dependencies on standalone Linux systems:
-1. if you do not have root or admin privileges, please consult your package manager on installing mpich and operator dependencies. 
-
-Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
-
-## 2. Configure HARP with TAPIS to configure HARP and applications to profile as container images. 
+## 1. Configure HARP with TAPIS to configure HARP and applications to profile as container images. 
 
 Steps:<br />
 Step 1. Creating a new HARP Image [or] using the pre-made HARP Image <br />
@@ -185,11 +113,93 @@ docker push <DockerHub>/harp-app-eulernumber-[local|ci]:2.0.0
 Use an existing copy of the Euler Number application image from our repository. 
 
 
-Harp has been tested on Pitzer (OSC) and stampede2 (TACC) using the TAPIS framework
+Using the TAPIS framework, Harp has been tested on Pitzer (OSC) and stampede2 (TACC).
+
+## 1. Installation-based HARP setup
+* Dependency: Linux, Python 3.9+, git, pip, mpich, psutil, jq(command line JSON parser https://stedolan.github.io/jq/)
+* On supercomputers (OSC), it should be installed at a location accessible from the parallel file system
+### **Follow these steps to set up HARP as a loadable software module on the Ohio Supercomputer (OSC):**
+  ```bash
+  git clone https://github.com/ICICLE-ai/harp.git
+  cd harp
+  chmod 755 install-osc-harp.sh
+  ./install-osc-harp.sh
+  ```
+  If the installation fails, please re-run the script 'install-osc-harp.sh' after deleting the environment 'harp-env' and running the cleanup.sh in the install directory. 
+  ```bash
+  conda remove --name harp-env --all
+  ./cleanup.sh
+  ```
+This setup installs miniconda, CODAR Cheetah (https://github.com/CODARcode/cheetah), TensorFlow, psutil, pandas, and scikit-learn and configures the Harp framework. Please follow the installation prompts to go ahead with the setup. This installation takes 30-40 mins to finish the setup on Owens login node.
+#### Loading the HARP module on OSC
+   ```bash
+  module use $HOME/osc_apps/lmodfiles
+  module load harp 
+  export CONDA_HOME=<path_to_miniconda>/miniconda3
+  source $CONDA_HOME/bin/activate
+  source activate harp_env
+   ```
+**NOTE**
+
+Things to consider while installing the Framework on OSC
+1. [OSC Installation] The installer creates a conda environment, "harp_env" on OSC and uses this environment to execute the Framework. The environment name is used in a couple of Cheetash configurations and hence is mandated to use the same name, "harp_env," while installing the application. Please delete the environment if it already exists with this name before installing the Framework.
+2. Upon successful installation, the install script will return the below response:
+ (OSC Install Script) Generating Module File Step: /users/PAS0536/swathivm/osc_apps/lmodfiles/harp/1.0.lua
+ (OSC Install Script) Generating Module File Step Finished
+ Finished at Thu Mar 16 11:44:13 EDT 2023
+ Execution time: 1965 seconds
+
+### **Follow these steps to set the HARP framework on a standalone Linux system:**
+* Use these commands to install the dependencies using pip
+  ```bash
+  pip install psutil
+  pip install tensorflow
+  pip install pandas
+  pip install scikit-learn
+  ```
+* Download the source code into the <install-dir> and set it to HARP_HOME
+  ```bash
+  git clone https://github.com/ICICLE-ai/harp.git
+  export HARP_HOME=<path-to-download-folder>/harp
+  ```
+* Install Cheetah
+  ```bash
+  cd $HARP_HOME/cheetah
+  pip install --editable .
+  ```
+* Ensure the scripts have '**execute**' privileges
+  ```bash
+  cd $HARP_HOME/pipeline/bin/local
+  chmod 755 harp
+  cd $HARP_HOME/cheetah/bin
+  chmod 755 *
+  ```
+* Set the HARP pipeline and Cheetah binaries in the PATH
+  ```bash
+  export PATH=$HARP_HOME/pipeline/bin/local:$HARP_HOME/cheetah/bin:$PATH
+  ```
+ The HARP pipeline is ready to used once the HARP_HOME and binaries are set in PATH. 
+ 
+**NOTE**
+
+Things to consider while installing the dependencies on standalone Linux systems:
+1. if you do not have root or admin privileges, please consult your package manager on installing mpich and operator dependencies. 
+
+Harp has been tested on Ownes and Pitzer (OSC) and a standalone Linux system.
 
 
    
 ## Using HARP to profile an application and predict the execution time
+### Using the HARP (version 2.0.0) to profile an application (e.g. Euler Number) on local box and CIs (OSC and TACC) using TAPIS
+
+a. To execute the application docker to profile it using HARP, run the following commands:
+```
+docker run --mount source=HARP_Store201,target=/scratch ghcr.io/icicle-ai/harp-app-eulernumber-local:2.0.0
+```
+b. To profile the application using HARP on OSC or TACC using TAPIS:
+Follow the instructions on '' notebook to register OSC and TACC systems on TAPIS and profile the application 'harp-app-eulernumber-ci:2.0.0' 
+
+
 ### Using the HARP (version 1.0.0) module load OSC of HARP binary on the local box
 1. Navigate to the target application folder and copy all the files from /Post_Execution_Scripts/basic into the current folder. 
 2. Edit path in post-script.sh to point to the target application directory
@@ -201,15 +211,6 @@ Harp has been tested on Pitzer (OSC) and stampede2 (TACC) using the TAPIS framew
   ```
 4. The results of the Framework are stored in the predictions.json file under the target application folder.
 Please find the sample application under the example folder and follow the readme file to execute the Framework against profiling and estimating the resource needs.
-
-### Using the HARP (version 2.0.0) to profile an application (e.g. Euler Number) on local box and CIs (OSC and TACC) using TAPIS
-
-a. To execute the application docker to profile it using HARP, run the following commands:
-```
-docker run --mount source=HARP_Store201,target=/scratch ghcr.io/icicle-ai/harp-app-eulernumber-local:2.0.0
-```
-b. To profile the application using HARP on OSC or TACC using TAPIS:
-Follow the instructions on '' notebook to register OSC and TACC systems on TAPIS and profile the application 'harp-app-eulernumber-ci:2.0.0' 
 
 Releases
 --------
