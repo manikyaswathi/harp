@@ -196,18 +196,21 @@ a. To profile the application, execute the application image built from HARP par
 ```
 docker run --mount source=HARP_Store,target=/scratch ghcr.io/icicle-ai/harp-app-eulernumber-local:2.0.0
 ```
-b. To profile the application using HARP on OSC or TACC </ br>
+b. To profile the application using HARP on OSC or TACC <br />
+
 i. Without TAPIS: Login into a compute node on OSC or TACC and run the following:
+#### for OSC Nodes
 ```
-# for OSC Nodes
 module load singularity
 singularity run docker://ghcr.io/icicle-ai/harp-app-eulernumber-ci:2.0.0 osc /fs/scratch/PAS2271/swathivm/
-# For TACC Nodes (Stampede2)
+```
+#### For TACC Nodes (Stampede2)
+```
 module load tacc-apptainer
 singularity run docker://ghcr.io/icicle-ai/harp-app-eulernumber-ci:2.0.0 tacc none
 ```
-ii. Without TAPIS: Login into a compute node on OSC or TACC and run the following:
-Follow the instructions on 'Executing_HARP_using_TAPIS.ipynb' notebook in 'Notebooks'folder to register OSC and TACC systems on TAPIS and profile the application 'harp-app-eulernumber-ci:2.0.0' using HARP
+
+ii. With TAPIS: Follow the instructions on '**Executing_HARP_using_TAPIS.ipynb**' notebook in 'Notebooks' folder to register OSC and TACC systems on TAPIS and profile the application 'harp-app-eulernumber-ci:2.0.0' using HARP
 
 
 ### Using the HARP (version 1.0.0) module load OSC of HARP binary on the local box
