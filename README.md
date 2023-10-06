@@ -48,7 +48,7 @@ Note: The Framework is built on TensorFlow Framework.
 
 Follow through the Colab notebooks for profiling the HARP Container application using TAPIS:
 1. For TACC stampede2 example use: https://drive.google.com/file/d/1JyAHUxxZ3pKMXGs28UXMQJn5QZmti1yS/view?usp=sharing
-
+2. For OSC pitzer example use:https://drive.google.com/file/d/1w8qCTWiOjvn8CCx6FqvZzG8ZJBRKy4M3/view?usp=sharing
 Alternatively, download the example notebook from the "Notebooks" folder
   
 **Steps:**
