@@ -42,8 +42,9 @@ Note: The Framework is built on TensorFlow Framework.
 **NOTE: IMPORTANT INFORMATION - PLEASE READ**
 ```
 1. TAPIS executes only containerized applications, so HARP (HARP framework) and the Application should be containerized.  
-2. Profiling an application HARP Framework with TAPIS is tested on both TACC and OSC systems. 
-3. HARP Framework and example containers could be executed on local box user docker or apptaner servers without TAPIS integration. 
+2. Profiling an application HARP Framework with TAPIS is tested on both TACC and OSC systems.
+3. Colab Notebooks server as examples for running HARP profiling for a sample Euler application using TAPIS. Make a COPY of the colab or download the Notebooks to execute them. 
+4. HARP Framework and example containers could be executed on local box user docker or apptaner servers without TAPIS integration. 
 ```
 
 Follow through the Colab notebooks for profiling the HARP Container application using TAPIS:
@@ -268,9 +269,11 @@ Other papers:
 
 Reporting Bugs and Contribution
 --------------------------------
-Please open an issue on the [github issues](https://github.com/manikyaswathi/harp/issues) page to report a bug.
+Please open an issue on the [github issues](https://github.com/manikyaswathi/harp/issues) page to report a bug or email vallabhajosyula.2@buckeyemail.osu.edu (with subject "HARP GitHub")
 
 HARP is an open-source repository, and we invite the community to collaborate and include their workflows into the Framework to profile their applications. Create a pull request to add your changes to the dev branch.
+
+SUBSCRIBE to ICICLE discussion mailing list at https://icicle.osu.edu/engagement/mailing-lists
 
 
 License
