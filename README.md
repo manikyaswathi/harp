@@ -32,28 +32,31 @@ Note: The Framework is built on TensorFlow Framework.
               Figure 2: Shows the target-application execution endpoint and the harp application folder structure. 
 
  
-## Ways to configure HARP to setup applications for profiling:
+## WAYS to configure HARP to setup applications for profiling:
 1. Configure HARP with TAPIS to execute HARP and applications to profile as container images. 
 2. Install HARP as a loadable module on OSC or localbox.
 
-## 1. Configure HARP with TAPIS to configure HARP and applications to profile as container images. 
+## WAY 1. Configure HARP with TAPIS to configure HARP and applications to profile as container images. 
 
 
 **NOTE: IMPORTANT INFORMATION - PLEASE READ**
 ```
 1. TAPIS executes only containerized applications, so HARP (HARP framework) and the Application should be containerized.  
 2. Profiling an application HARP Framework with TAPIS is tested on both TACC and OSC systems. 
-  Follow through the Notebook: https://colab.research.google.com/drive/1IbOrGBCa9Cpl5BOSJrCUgmICKb-TOczu?usp=sharing for profiling the application using HARP Container using TAPIS. 
-  Alternatively, download the example notebook from the "Notebooks" folder
 3. HARP Framework and example containers could be executed on local box user docker or apptaner servers without TAPIS integration. 
 ```
 
+Follow through the Colab notebooks for profiling the HARP Container application using TAPIS:
+1. For TACC stampede2 example use: https://drive.google.com/file/d/1JyAHUxxZ3pKMXGs28UXMQJn5QZmti1yS/view?usp=sharing
+
+Alternatively, download the example notebook from the "Notebooks" folder
+  
 **Steps:**
 
 - 1.Create a new HARP Image [or] using the pre-made HARP Image
-- 2.Create an image for the application to be profiled using HARP Framework (Image) 
-  3.Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like OSC or TACC nodes) with or without TAPIS.<br /><br />
-
+- 2.Create an image for the application to be profiled using HARP Framework (Image)
+- 3.Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like OSC or TACC nodes) with or without TAPIS.
+  
 
 1. **Create a HARP Image using Docker Environment**
 
@@ -127,8 +130,9 @@ docker push <DockerHub>/harp-app-eulernumber-[local|ci]:2.0.0
 
 Use an existing copy of the Euler Number application image from our repository. 
 
+3. **Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like OSC or TACC nodes) with or without TAPIS.**
 
-## 2. Installation-based HARP setup
+## WAY 2. Installation-based HARP setup
 * Dependency: Linux, Python 3.9+, git, pip, mpich, psutil, jq(command line JSON parser https://stedolan.github.io/jq/)
 * On supercomputers (OSC), it should be installed at a location accessible from the parallel file system
 ### **Follow these steps to set up HARP as a loadable software module on the Ohio Supercomputer (OSC):**
