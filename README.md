@@ -51,11 +51,11 @@ NOTE: PLEASE READ BEFORE CONFIGURING HARP WITH TAPIS
 
 1. Create a new HARP Image [or] using the pre-made HARP Image
 2. Create an image for the application to be profiled using HARP Framework (Image) 
-3. Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like OSC or TACC nodes) with or without TAPIS.
-
+3. Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like OSC or TACC nodes) with or without TAPIS.<br /><br />
 
 
 1. Create a HARP Image using Docker Environment <br />
+
 a. Use the 'Dockerfile_HARP_local' file to create an Image for executing the Framework on a local box using 'docker build'. 
 ```
 docker build -f DockerFiles/Dockerfile_HARP_local -t harp-framework-local:2.0.0 .
@@ -81,9 +81,10 @@ b. Use the harp-framework-ci:2.0.0  file for executing the Framework on TACC or 
 Note: Execute the 'docker build' command from the main folder 'harp'.
 
 2. Create an image for the application to be profiled using HARP Framework (Image)
-Using the Image created in "Step 1" or the respective Image from the ICICLE repository, create an Image for the application to be profiled using the HARP Framework. We refer to the application to be profiled as a 'target application'. 
 
-Steps for creating a DockeFile for the target application and building an image using the 'Dockerfile_App_Template' template. 
+Using the Image created in "Step 1" or the respective Image from the ICICLE repository, create an Image for the application to be profiled using the HARP Framework. We refer to the application to be profiled as a 'target application'. <br />
+
+Steps for creating a DockeFile for the target application and building an image using the 'Dockerfile_App_Template' template. <br />
 
 a. Edit the 'ProfileApplication.sh' entry point file to execute the HARP with the pipeline configurations JSON. Replace "pipeline_config.json" with your desired pipeline configuration file in the application work folder.
 ```
@@ -279,3 +280,4 @@ The HARP is licensed under the https://opensource.org/licenses/BSD-3-Clause
  # Acknowledgements
 
 *This work has been funded by grants from the National Science Foundation, including the ICICLE AI Institute (OAC 2112606) and EAGER (OAC 1945347)*
+
