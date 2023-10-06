@@ -38,10 +38,13 @@ Note: The Framework is built on TensorFlow Framework.
 
 ## 1. Configure HARP with TAPIS to configure HARP and applications to profile as container images. 
 
+Follow through the Notebook: https://colab.research.google.com/drive/1IbOrGBCa9Cpl5BOSJrCUgmICKb-TOczu?usp=sharing for profiling the application using HARP Container using TAPIS. 
+Alternatively, download the example notebook from "Notebooks" folder
+
 Steps:<br />
-Step 1. Creating a new HARP Image [or] using the pre-made HARP Image <br />
-Step 2. Create an image for the application to be profiled using HARP Framework (Image) <br />
-Step 3. Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like oSC or TACC nodes) with or without TAPIS.
+1. Creating a new HARP Image [or] using the pre-made HARP Image
+2. Create an image for the application to be profiled using HARP Framework (Image) 
+3. Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like oSC or TACC nodes) with or without TAPIS.
 
 1. Creating a HARP Image using Docker Environment <br />
 a. Use the 'Dockerfile_HARP_local' file to create an Image for executing the Framework on a local box using 'docker build'. 
@@ -56,13 +59,13 @@ docker build -f DockerFiles/Dockerfile_HARP_CI -t harp-framework-ci:2.0.0 .
 ```
 
 c. Push the Image to the docker hub or upload it to any web-accessible location. 
+
+Push the image to a web-accessible location like dockerhub using the following command:
 ```
 docker push <DockerHub>/harp-framework-[local|ci]:2.0.0
 ```
 
-[or]
-
-Use an existing copy of the HARP image from our repository 
+If you already have access to the pre-compiled images, use these copies of the HARP image from our repository 
 a. Use the harp-framework-local:2.0.0  file for executing the Framework on a local box. 
 b. Use the harp-framework-ci:2.0.0  file for executing the Framework on TACC or OSC Systems. 
 
@@ -105,11 +108,11 @@ a. Use the 'Dockerfile_App_EulerNumber' file to create an Image for executing th
 docker build -f DockerFiles/Dockerfile_App_EulerNumber -t harp-app-eulernumber-[local|ci]:2.0.0 .
 ```
 b. Push the Image to the docker hub or upload it to any web-accessible location. 
+
+Push the image to a web-accessible location like dockerhub using the following command:
 ```
 docker push <DockerHub>/harp-app-eulernumber-[local|ci]:2.0.0 
 ```
-
-[or]
 
 Use an existing copy of the Euler Number application image from our repository. 
 
