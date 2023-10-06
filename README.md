@@ -38,13 +38,19 @@ Note: The Framework is built on TensorFlow Framework.
 
 ## 1. Configure HARP with TAPIS to configure HARP and applications to profile as container images. 
 
-Follow through the Notebook: https://colab.research.google.com/drive/1IbOrGBCa9Cpl5BOSJrCUgmICKb-TOczu?usp=sharing for profiling the application using HARP Container using TAPIS. 
-Alternatively, download the example notebook from "Notebooks" folder
+NOTE: PLEASE READ BEFORE CONFIGURING HARP WITH TAPIS
+
+1. TAPIS executes only contanierised applications, so HARP (HARP framework) and the Application should be contaninerized.  
+2. Profiling an application HARP Framework with TAPIS is test on both TACC and OSC systems. 
+  Follow through the Notebook: https://colab.research.google.com/drive/1IbOrGBCa9Cpl5BOSJrCUgmICKb-TOczu?usp=sharing for profiling the application using HARP Container using TAPIS. 
+  Alternatively, download the example notebook from "Notebooks" folder
+3. HARP Framework and example comntainers could be executed on local box user docker or apptaner servers without TAPIS integration. 
+
 
 Steps:<br />
 1. Creating a new HARP Image [or] using the pre-made HARP Image
 2. Create an image for the application to be profiled using HARP Framework (Image) 
-3. Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like oSC or TACC nodes) with or without TAPIS.
+3. Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like OSC or TACC nodes) with or without TAPIS.
 
 1. Creating a HARP Image using Docker Environment <br />
 a. Use the 'Dockerfile_HARP_local' file to create an Image for executing the Framework on a local box using 'docker build'. 
