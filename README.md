@@ -49,9 +49,9 @@ NOTE: PLEASE READ BEFORE CONFIGURING HARP WITH TAPIS
 
 **Steps:**
 
-1. Create a new HARP Image [or] using the pre-made HARP Image
-2. Create an image for the application to be profiled using HARP Framework (Image) 
-3. Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like OSC or TACC nodes) with or without TAPIS.<br /><br />
+- 1. Create a new HARP Image [or] using the pre-made HARP Image
+- 2. Create an image for the application to be profiled using HARP Framework (Image) 
+- 3. Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like OSC or TACC nodes) with or without TAPIS.<br /><br />
 
 
 1. Create a HARP Image using Docker Environment <br />
