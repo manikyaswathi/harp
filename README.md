@@ -48,11 +48,13 @@ NOTE: PLEASE READ BEFORE CONFIGURING HARP WITH TAPIS
 
 
 Steps:<br />
-1. Creating a new HARP Image [or] using the pre-made HARP Image
+1. Create a new HARP Image [or] using the pre-made HARP Image
 2. Create an image for the application to be profiled using HARP Framework (Image) 
 3. Refer to Section "_Using HARP to profile an application and predict the execution time_" for steps to execute the container in localbox or a CI (like OSC or TACC nodes) with or without TAPIS.
 
-1. Creating a HARP Image using Docker Environment <br />
+
+
+1. Create a HARP Image using Docker Environment <br />
 a. Use the 'Dockerfile_HARP_local' file to create an Image for executing the Framework on a local box using 'docker build'. 
 ```
 docker build -f DockerFiles/Dockerfile_HARP_local -t harp-framework-local:2.0.0 .
