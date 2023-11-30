@@ -36,8 +36,9 @@ class Predictor():
         
         self.dataset = None
         
-        self.savepath_one =  os.path.join(os.getenv("PIPELINE_HOME"), "applications", self.application)
-        self.savepath_two =  self.config["cheetah_app_directory"]
+        # self.savepath_one =  os.path.join(os.getenv("PIPELINE_HOME"), "applications", self.application)
+        self.savepath_one =  os.path.join(os.getenv("HARP_STORE"), "applications", "basic", self.application)
+        # self.savepath_two =  self.config["cheetah_app_directory"]
         self.savefile = "predictions.csv"
         self.columns = None
         self.estimate = None
@@ -69,7 +70,8 @@ class Predictor():
         self.test = self.estimate[(self.estimate['run_type'] == "test_data")] 
         self.orig = self.estimateOrig[(self.estimateOrig['run_type'] == "test_data")] 
         
-        self.models_home = os.path.join(os.getenv("PIPELINE_HOME"), "applications", self.application,"models")
+        # self.models_home = os.path.join(os.getenv("PIPELINE_HOME"), "applications", self.application,"models")
+        self.models_home = os.path.join(os.getenv("HARP_STORE"), "applications", "basic", self.application,"models")
 
 
 
@@ -143,15 +145,15 @@ class Predictor():
         self.results = self.orig.merge(res, how='inner', on='uniq_id')
         
         self.results.to_csv(self.savepath_one+'/'+self.savefile, header=True, index=False)
-        self.results.to_csv(self.savepath_two+'/'+self.savefile, header=True, index=False)
+        # self.results.to_csv(self.savepath_two+'/'+self.savefile, header=True, index=False)
 
-        f = open(self.savepath_two+"/prediction_summary.txt", "w")
-        f.write("*** The details of the model and dataset used for predictions ***")
-        f.write("\nThe saved model used for predictions:"+self.model)
-        f.write("\nThe dataset used for predictions:"+self.dsType)
-        f.write("\nThe Regression model used for predictions:"+self.modelType)
-        f.write("\nThe validation adjustment used for predictions:"+str(self.VA))
-        f.close()
+        # f = open(self.savepath_two+"/prediction_summary.txt", "w")
+        # f.write("*** The details of the model and dataset used for predictions ***")
+        # f.write("\nThe saved model used for predictions:"+self.model)
+        # f.write("\nThe dataset used for predictions:"+self.dsType)
+        # f.write("\nThe Regression model used for predictions:"+self.modelType)
+        # f.write("\nThe validation adjustment used for predictions:"+str(self.VA))
+        # f.close()
     
     
     def execute(self):

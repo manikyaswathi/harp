@@ -41,7 +41,8 @@ class ModelTrainer(PipelineModule):
         print("INFO: Saving models...")
         metadata = self.config["pipeline_config"]
         # model_paths = metadata["models"]
-        models_home = os.path.join(os.getenv("PIPELINE_HOME"), "applications", self.application,"models")
+        # models_home = os.path.join(os.getenv("PIPELINE_HOME"), "applications", self.application,"models")
+        models_home = os.path.join(os.getenv("HARP_STORE"), "applications", "basic", self.application,"models")
         for k,v in models:
             model_path = os.path.join(models_home, k)
             lr_regex = re.compile('^LR_*')
@@ -59,8 +60,10 @@ class ModelTrainer(PipelineModule):
         print("INFO: Saving the stage 2 data as CSV...")
         metadata = self.config["pipeline_config"]
         # model_paths = metadata["models"]
-        models_home = os.path.join(os.getenv("PIPELINE_HOME"), "applications", self.application,"models")
-        models_meta = os.path.join(os.getenv("PIPELINE_HOME"), "applications", self.application)
+        # models_home = os.path.join(os.getenv("PIPELINE_HOME"), "applications", self.application,"models")
+        # models_meta = os.path.join(os.getenv("PIPELINE_HOME"), "applications", self.application)
+        models_home = os.path.join(os.getenv("HARP_STORE"), "applications", "basic", self.application,"models")
+        models_meta = os.path.join(os.getenv("HARP_STORE"), "applications", "basic", self.application)
         metafile = metadata["model_commons_filename"]
         
         print("models_home", models_home)
